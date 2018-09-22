@@ -51,7 +51,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qvc-OG-fGy">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBI-Ya-9YT">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Y2-aX-WQW" userLabel="chartView" customClass="LineChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBI-Ya-9YT" userLabel="bottomView">
                                         <rect key="frame" x="0.0" y="587" width="375" height="60"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCe-nk-hXL" userLabel="leftPercentatge" customClass="PercentatgeView" customModule="CHTestClient" customModuleProvider="target">
@@ -87,9 +91,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="5Y2-aX-WQW" firstAttribute="top" secondItem="Qvc-OG-fGy" secondAttribute="top" id="7SD-ae-8wd"/>
+                                    <constraint firstItem="5Y2-aX-WQW" firstAttribute="leading" secondItem="Qvc-OG-fGy" secondAttribute="leading" id="7fr-bB-hXa"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Y2-aX-WQW" secondAttribute="trailing" id="9dG-7W-icA"/>
                                     <constraint firstItem="zBI-Ya-9YT" firstAttribute="leading" secondItem="Qvc-OG-fGy" secondAttribute="leading" id="CSa-NS-Hqt"/>
                                     <constraint firstAttribute="bottom" secondItem="zBI-Ya-9YT" secondAttribute="bottom" id="M10-Zk-FRx"/>
                                     <constraint firstAttribute="trailing" secondItem="zBI-Ya-9YT" secondAttribute="trailing" id="tWh-V5-qSG"/>
+                                    <constraint firstItem="zBI-Ya-9YT" firstAttribute="top" secondItem="5Y2-aX-WQW" secondAttribute="bottom" id="zXY-l5-eGa"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -103,6 +111,7 @@
                         <viewLayoutGuide key="safeArea" id="End-ew-A4g"/>
                     </view>
                     <connections>
+                        <outlet property="chartView" destination="5Y2-aX-WQW" id="E2h-0D-eS2"/>
                         <outlet property="leftPercentatgeView" destination="SCe-nk-hXL" id="M4E-fz-Geg"/>
                         <outlet property="midPercentatgeView" destination="K8B-xw-eMc" id="zKj-HZ-BEX"/>
                         <outlet property="rightPercentatgeView" destination="noj-0x-WCZ" id="XMx-ma-F7a"/>

@@ -40,11 +40,12 @@ class CryptocurrenciesListViewController: BaseViewController {
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         refreshControl.tintColor = UIColor.white
         coinsTableView.refreshControl = refreshControl
+        
+        self.refreshData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.refreshData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

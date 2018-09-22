@@ -11,6 +11,8 @@ import UIKit
 class CoinDetailViewModel: NSObject {
     
     fileprivate let kDefaultDecimalPlaces = 2
+    fileprivate var historicalData = [Historical]()
+
     private let coinModel : CoinData
 
     init(withCoinModel coinModel:CoinData){
@@ -59,11 +61,19 @@ class CoinDetailViewModel: NSObject {
         guard let coinIdentifier = self.coinModel.id else {
             return
         }
+        delegate.startDownload()
         CryptojetioDataSource.getCoinHistorical(withCoinIdentifier: String(coinIdentifier)) { (error, response) in
-            
+            if let historicData = response?.historical  {
+                self.historicalData = historicData
+            }
+            delegate.stopDownload(withError: error)
         }
     }
 
     //MARK: - Chart UI
+    
+    func getChartData()->[Historical] {
+        return self.historicalData
+    }
     
 }
