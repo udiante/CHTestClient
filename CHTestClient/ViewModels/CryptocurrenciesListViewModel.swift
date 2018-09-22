@@ -135,7 +135,7 @@ class CryptocurrenciesListViewModel: NSObject {
         }
         if self.cellsVM.count == 0 {
             // Retry download
-            cellsVM.append(CryptocurrenciesListCellViewModel(infoType: "Press download to retrieve all Cryptocurrencies".localized(), btnText: "Download".localized(), icon: UIImage(named: "chip")))
+            cellsVM.append(CryptocurrenciesListCellViewModel(infoType: "Press download to retrieve all Cryptocurrencies".localized(), btnText: "Download".localized(), icon: UIImage(named: "chip")?.withRenderingMode(.alwaysTemplate)))
         }
     }
     

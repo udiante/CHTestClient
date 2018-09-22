@@ -80,6 +80,7 @@ class CryptocurrenciesListViewController: BaseViewController {
     
     @objc func refreshData(){
         viewModel.resetCoins()
+        self.coinsTableView.bounces = !(self.viewModel.getNumberOfCells() == 1)
         viewModel.loadCoins(delegate: self)
     }
     
