@@ -15,13 +15,18 @@ class CoinDetailViewController: BaseViewController {
     @IBOutlet private weak var midPercentatgeView: PercentatgeView!
     @IBOutlet private weak var rightPercentatgeView: PercentatgeView!
 
-    @IBOutlet weak var chartView: LineChartView!
+    @IBOutlet private weak var chartView: LineChartView!
+    
+    @IBOutlet private weak var lblValue: UILabel!
+    @IBOutlet weak var lblInfo: UILabel!
+    
     
     fileprivate (set) var viewModel : CoinDetailViewModel!
     
     static func storyBoardInstance(withCoinModel coinModel:CoinData)->CoinDetailViewController {
         let vc = UIStoryboard(name: "MainStoryboard", bundle: nil).instantiateViewController(withIdentifier: "CoinDetailViewController") as! CoinDetailViewController
         vc.viewModel = CoinDetailViewModel(withCoinModel: coinModel)
+        vc.hidesBottomBarWhenPushed = true
         return vc
     }
 
@@ -30,6 +35,7 @@ class CoinDetailViewController: BaseViewController {
         
         self.useLargeTitleAtNavigationBar = false
         configureChart()
+        updateLegendValues(nil)
         self.title = viewModel.getTitle()
         self.downloadChartData()
     }
@@ -83,7 +89,6 @@ class CoinDetailViewController: BaseViewController {
         chartView.pinchZoomEnabled = true
         
         chartView.xAxis.labelPosition = .bottom
-        
         chartView.xAxis.labelTextColor = Constants.colors.defaultColor
         chartView.xAxis.drawAxisLineEnabled = true
         chartView.xAxis.drawGridLinesEnabled = false
@@ -94,10 +99,7 @@ class CoinDetailViewController: BaseViewController {
         chartView.rightAxis.drawGridLinesEnabled = false
         chartView.rightAxis.drawLabelsEnabled = false
         
-        //leftAxis
         chartView.leftAxis.enabled = false
-        
-        //Marker
         
         //Legend
         chartView.legend.form = .none
@@ -105,20 +107,23 @@ class CoinDetailViewController: BaseViewController {
         
         chartView.noDataText = "No data available".localized()
         chartView.noDataTextColor = Constants.colors.defaultColor
+        
+        chartView.delegate = self
     
     }
     
     func prepareChartData(){
         var values = [ChartDataEntry]()
         var x :Double = 0
-        for value in self.viewModel.getChartData() where value.snapshot_at != nil && value.price_usd != nil && Double(value.price_usd!) != nil{
-            let chartDataEntry = ChartDataEntry(x: x, y: Double(value.price_usd!)!)
+        for value in self.viewModel.getChartData(){
+            let chartDataEntry = ChartDataEntry(x: x, y: value.usdValue)
             x += 1;
+            chartDataEntry.data = value
             values.append(chartDataEntry)
         }
         
         let set = LineChartDataSet(values: values, label: "")
-        //        set1.mode = .horizontalBezier
+        set.mode = .horizontalBezier
         set.drawIconsEnabled = false
         set.drawIconsEnabled = true
         
@@ -151,11 +156,22 @@ class CoinDetailViewController: BaseViewController {
 
 extension CoinDetailViewController : ChartViewDelegate {
     
+    func updateLegendValues(_ historicalModel:CoinHistoricalChartModel?){
+        if let historical = historicalModel {
+            self.lblValue.text = historical.getFormattedValue()
+            self.lblInfo.text = historical.getFormattedDate()
+        }
+        else {
+            self.lblInfo.text = nil
+            self.lblValue.text = nil
+        }
+    }
+    
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        
+        self.updateLegendValues(entry.data as? CoinHistoricalChartModel)
     }
     
     func chartValueNothingSelected(_ chartView: ChartViewBase) {
-        
+        self.updateLegendValues(nil)
     }
 }

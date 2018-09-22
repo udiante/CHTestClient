@@ -8,6 +8,31 @@
 
 import UIKit
 
+class CoinHistoricalChartModel {
+    let usdValue : Double
+    let dateValue : Date
+    
+    init?(withHistoricalData historicalModel: Historical) {
+        guard let usdStringValue = historicalModel.price_usd, let usdDoubleValue = Double(usdStringValue), let dateTs = historicalModel.snapshot_at, let date = Utils.getDateISO8601(fromString: dateTs) else {
+            return nil
+        }
+        self.usdValue = usdDoubleValue
+        self.dateValue = date
+        
+    }
+
+    func getFormattedValue()->String {
+        return Utils.formatAmount(self.usdValue, decimalPlaces: 5, currencySymbol: "$")
+    }
+    
+    func getFormattedDate()->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "dd MMMM yyyy HH:mm"
+        return dateFormatter.string(from: self.dateValue)
+    }
+}
+
 class CoinDetailViewModel: NSObject {
     
     fileprivate let kDefaultDecimalPlaces = 2
@@ -72,8 +97,14 @@ class CoinDetailViewModel: NSObject {
 
     //MARK: - Chart UI
     
-    func getChartData()->[Historical] {
-        return self.historicalData
+    func getChartData()->[CoinHistoricalChartModel] {
+        var chartData = [CoinHistoricalChartModel]()
+        for data in self.historicalData {
+            if let chartVM = CoinHistoricalChartModel(withHistoricalData: data) {
+                chartData.append(chartVM)
+            }
+        }
+        return chartData
     }
     
 }

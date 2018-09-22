@@ -52,8 +52,35 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Y2-aX-WQW" userLabel="chartView" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="587"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="518"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oli-76-J5R" userLabel="infoView">
+                                        <rect key="frame" x="0.0" y="518" width="375" height="69"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2PU-0C-bb0" userLabel="Value">
+                                                <rect key="frame" x="20" y="5" width="335" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cN6-Fq-hec" userLabel="Date">
+                                                <rect key="frame" x="20" y="31" width="335" height="18"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="0.72163955479452058" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="cN6-Fq-hec" firstAttribute="top" secondItem="2PU-0C-bb0" secondAttribute="bottom" constant="5" id="Bin-I7-i9b"/>
+                                            <constraint firstItem="2PU-0C-bb0" firstAttribute="top" secondItem="oli-76-J5R" secondAttribute="top" constant="5" id="Ep3-s6-CdX"/>
+                                            <constraint firstItem="cN6-Fq-hec" firstAttribute="trailing" secondItem="2PU-0C-bb0" secondAttribute="trailing" id="K7Y-iM-llI"/>
+                                            <constraint firstItem="2PU-0C-bb0" firstAttribute="leading" secondItem="oli-76-J5R" secondAttribute="leading" constant="20" id="N2B-Hf-JIo"/>
+                                            <constraint firstItem="cN6-Fq-hec" firstAttribute="leading" secondItem="2PU-0C-bb0" secondAttribute="leading" id="OIH-Mk-75y"/>
+                                            <constraint firstAttribute="trailing" secondItem="2PU-0C-bb0" secondAttribute="trailing" constant="20" id="ewS-tv-0QW"/>
+                                            <constraint firstAttribute="bottom" secondItem="cN6-Fq-hec" secondAttribute="bottom" constant="20" symbolic="YES" id="g1D-e9-eYZ"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBI-Ya-9YT" userLabel="bottomView">
                                         <rect key="frame" x="0.0" y="587" width="375" height="60"/>
@@ -94,10 +121,13 @@
                                     <constraint firstItem="5Y2-aX-WQW" firstAttribute="top" secondItem="Qvc-OG-fGy" secondAttribute="top" id="7SD-ae-8wd"/>
                                     <constraint firstItem="5Y2-aX-WQW" firstAttribute="leading" secondItem="Qvc-OG-fGy" secondAttribute="leading" id="7fr-bB-hXa"/>
                                     <constraint firstAttribute="trailing" secondItem="5Y2-aX-WQW" secondAttribute="trailing" id="9dG-7W-icA"/>
+                                    <constraint firstItem="oli-76-J5R" firstAttribute="top" secondItem="5Y2-aX-WQW" secondAttribute="bottom" id="BlW-hf-DaQ"/>
                                     <constraint firstItem="zBI-Ya-9YT" firstAttribute="leading" secondItem="Qvc-OG-fGy" secondAttribute="leading" id="CSa-NS-Hqt"/>
                                     <constraint firstAttribute="bottom" secondItem="zBI-Ya-9YT" secondAttribute="bottom" id="M10-Zk-FRx"/>
+                                    <constraint firstAttribute="trailing" secondItem="oli-76-J5R" secondAttribute="trailing" id="Yl2-Y7-2R9"/>
                                     <constraint firstAttribute="trailing" secondItem="zBI-Ya-9YT" secondAttribute="trailing" id="tWh-V5-qSG"/>
-                                    <constraint firstItem="zBI-Ya-9YT" firstAttribute="top" secondItem="5Y2-aX-WQW" secondAttribute="bottom" id="zXY-l5-eGa"/>
+                                    <constraint firstItem="oli-76-J5R" firstAttribute="leading" secondItem="Qvc-OG-fGy" secondAttribute="leading" id="udQ-1l-tsI"/>
+                                    <constraint firstItem="zBI-Ya-9YT" firstAttribute="top" secondItem="oli-76-J5R" secondAttribute="bottom" id="v15-WC-7QR"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -112,6 +142,8 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="5Y2-aX-WQW" id="E2h-0D-eS2"/>
+                        <outlet property="lblInfo" destination="cN6-Fq-hec" id="BtH-yb-XKe"/>
+                        <outlet property="lblValue" destination="2PU-0C-bb0" id="s1v-Lr-kxG"/>
                         <outlet property="leftPercentatgeView" destination="SCe-nk-hXL" id="M4E-fz-Geg"/>
                         <outlet property="midPercentatgeView" destination="K8B-xw-eMc" id="zKj-HZ-BEX"/>
                         <outlet property="rightPercentatgeView" destination="noj-0x-WCZ" id="XMx-ma-F7a"/>

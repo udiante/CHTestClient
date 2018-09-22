@@ -14,14 +14,18 @@ class Utils: NSObject {
         guard let value = Double(amount) else {
             return amount
         }
+        return formatAmount(value, decimalPlaces: decimalPlaces, currencySymbol: currencySymbol)
+    }
+    
+    static func formatAmount(_ value:Double, decimalPlaces:Int, currencySymbol:String?)->String{
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        formatter.minimumFractionDigits = decimalPlaces
+        formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = decimalPlaces
         formatter.minimumIntegerDigits = 1
         formatter.locale = Locale.current
         formatter.currencySymbol = currencySymbol
-        return formatter.string(from: NSNumber(value: value)) ?? amount
+        return formatter.string(from: NSNumber(value: value)) ?? value.description
     }
     
     static func formattPercent(_ rawValue:String, decimalPlaces:Int)->String{
@@ -33,7 +37,6 @@ class Utils: NSObject {
         formatter.minimumFractionDigits = decimalPlaces
         formatter.maximumFractionDigits = decimalPlaces
         formatter.multiplier = 1
-//        formatter.minimumIntegerDigits = 1
         formatter.locale = Locale.current
         return formatter.string(from: NSNumber(value: value)) ?? rawValue
     }
@@ -50,5 +53,9 @@ class Utils: NSObject {
             return Constants.colors.negativeColor
         }
         return Constants.colors.defaultColor
+    }
+    
+    static func getDateISO8601(fromString string:String)->Date?{
+        return ISO8601DateFormatter().date(from: string)
     }
 }
