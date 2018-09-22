@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ewg-l5-RRJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6y7-a8-NU3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -16,12 +16,47 @@
                     <view key="view" contentMode="scaleToFill" id="2eA-Kw-Nh5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0lG-Uf-2ap">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zjh-kq-BJv" firstAttribute="trailing" secondItem="0lG-Uf-2ap" secondAttribute="trailing" id="Ee4-Aa-nz7"/>
+                            <constraint firstItem="0lG-Uf-2ap" firstAttribute="top" secondItem="zjh-kq-BJv" secondAttribute="top" id="PED-Ej-f3N"/>
+                            <constraint firstItem="0lG-Uf-2ap" firstAttribute="leading" secondItem="zjh-kq-BJv" secondAttribute="leading" id="V9V-fz-MSh"/>
+                            <constraint firstItem="zjh-kq-BJv" firstAttribute="bottom" secondItem="0lG-Uf-2ap" secondAttribute="bottom" id="l0o-BC-TZi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zjh-kq-BJv"/>
                     </view>
+                    <navigationItem key="navigationItem" id="W9h-ry-r1m"/>
+                    <connections>
+                        <outlet property="coinsTableView" destination="0lG-Uf-2ap" id="hpi-JN-nHS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PUh-m1-SuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1076" y="125.4872563718141"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ddV-M6-Lg0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6y7-a8-NU3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LKu-8S-UTD">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ewg-l5-RRJ" kind="relationship" relationship="rootViewController" id="ePl-e4-vbi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ysX-xt-Kfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="15" y="125"/>
         </scene>
     </scenes>
 </document>

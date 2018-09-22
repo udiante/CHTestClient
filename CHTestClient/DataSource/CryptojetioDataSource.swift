@@ -45,6 +45,17 @@ class CryptojetioDataSource : NSObject {
         }
     }
     
+    //The API service returns the pagination of the pages with an absolute URL
+    static func getCoins(atPage requestUrl:String, completionHandler: (@escaping (NetworkDataSourceError?, CoinResponse?) -> Void)){
+        self.networkDataSource.getRequest(urlRequest: requestUrl, parameters: nil, responseObject: CoinResponse.self) { (error, response) in
+            guard error == nil, let responseObject = response as? CoinResponse else {
+                completionHandler(error ?? NetworkDataSourceError.RequestError,nil)
+                return
+            }
+            completionHandler(nil,responseObject)
+        }
+    }
+    
     static func getCoinDetail(withCoinIdentifier coinIdentifier:String, completionHandler: (@escaping (NetworkDataSourceError?, CoinDetailResponse?) -> Void)){
         let requestUrl = Endpoints.coinDetail.getFullPath(baseURL: baseURL,resourceIdentifier: coinIdentifier)
         self.networkDataSource.getRequest(urlRequest: requestUrl, parameters: nil, responseObject: CoinDetailResponse.self) { (error, response) in

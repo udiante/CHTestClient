@@ -13,6 +13,15 @@ public enum NetworkDataSourceError : Error {
     case RequestError
     case NetworkError
     case NoAuthorized
+    
+    func getLocalizedErrorDescription()->String {
+        switch self {
+        case .NetworkError:
+            return "Parece que no estás conectado a internet, vuevle a intentrarlo más tarde"
+        default:
+            return "Error al realizar la petición"
+        }
+    }
 }
 
 public class NetworkDataSource: NSObject {

@@ -25,6 +25,17 @@
 		A9E27A8C215694EC00718AB5 /* Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27A8A215694EC00718AB5 /* Trade.swift */; };
 		A9E27A8D215694EC00718AB5 /* PostTradeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27A8B215694EC00718AB5 /* PostTradeResponse.swift */; };
 		A9E27A8F21569B4700718AB5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A9E27A8E21569B4700718AB5 /* README.md */; };
+		A9E27A9121569FD200718AB5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27A9021569FD200718AB5 /* BaseViewController.swift */; };
+		A9E27A942156B31500718AB5 /* JustHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27A932156B31500718AB5 /* JustHUD.swift */; };
+		A9E27A9A2156C0EE00718AB5 /* CoinInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27A982156C0EE00718AB5 /* CoinInfoTableViewCell.swift */; };
+		A9E27A9B2156C0EE00718AB5 /* CoinInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E27A992156C0EE00718AB5 /* CoinInfoTableViewCell.xib */; };
+		A9E27A9E2156C14A00718AB5 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27A9C2156C14A00718AB5 /* LoadingTableViewCell.swift */; };
+		A9E27A9F2156C14A00718AB5 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E27A9D2156C14A00718AB5 /* LoadingTableViewCell.xib */; };
+		A9E27AA22156C9ED00718AB5 /* StartListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27AA02156C9ED00718AB5 /* StartListTableViewCell.swift */; };
+		A9E27AA32156C9ED00718AB5 /* StartListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E27AA12156C9ED00718AB5 /* StartListTableViewCell.xib */; };
+		A9E27AA62156D48600718AB5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27AA52156D48600718AB5 /* Utils.swift */; };
+		A9E27AA82156DDBA00718AB5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27AA72156DDBA00718AB5 /* Constants.swift */; };
+		A9E27AAA2156DE7C00718AB5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E27AA92156DE7C00718AB5 /* Extensions.swift */; };
 		A9F3337921559E4B002E159F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F3337821559E4B002E159F /* AppDelegate.swift */; };
 		A9F3338021559E4C002E159F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9F3337F21559E4C002E159F /* Assets.xcassets */; };
 		A9F3338321559E4C002E159F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9F3338121559E4C002E159F /* LaunchScreen.storyboard */; };
@@ -50,6 +61,17 @@
 		A9E27A8A215694EC00718AB5 /* Trade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trade.swift; sourceTree = "<group>"; };
 		A9E27A8B215694EC00718AB5 /* PostTradeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTradeResponse.swift; sourceTree = "<group>"; };
 		A9E27A8E21569B4700718AB5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A9E27A9021569FD200718AB5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		A9E27A932156B31500718AB5 /* JustHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JustHUD.swift; sourceTree = "<group>"; };
+		A9E27A982156C0EE00718AB5 /* CoinInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoTableViewCell.swift; sourceTree = "<group>"; };
+		A9E27A992156C0EE00718AB5 /* CoinInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinInfoTableViewCell.xib; sourceTree = "<group>"; };
+		A9E27A9C2156C14A00718AB5 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		A9E27A9D2156C14A00718AB5 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
+		A9E27AA02156C9ED00718AB5 /* StartListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartListTableViewCell.swift; sourceTree = "<group>"; };
+		A9E27AA12156C9ED00718AB5 /* StartListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartListTableViewCell.xib; sourceTree = "<group>"; };
+		A9E27AA52156D48600718AB5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A9E27AA72156DDBA00718AB5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A9E27AA92156DE7C00718AB5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A9F3337521559E4B002E159F /* CHTestClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHTestClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F3337821559E4B002E159F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9F3337F21559E4C002E159F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,6 +120,7 @@
 		A91F786521559FCD0066048E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A9E27A9021569FD200718AB5 /* BaseViewController.swift */,
 				A91F786C2155B2530066048E /* CryptocurrenciesListViewController.swift */,
 			);
 			path = Controllers;
@@ -123,6 +146,12 @@
 		A91F78732155B7460066048E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A9E27A982156C0EE00718AB5 /* CoinInfoTableViewCell.swift */,
+				A9E27A992156C0EE00718AB5 /* CoinInfoTableViewCell.xib */,
+				A9E27A9C2156C14A00718AB5 /* LoadingTableViewCell.swift */,
+				A9E27A9D2156C14A00718AB5 /* LoadingTableViewCell.xib */,
+				A9E27AA02156C9ED00718AB5 /* StartListTableViewCell.swift */,
+				A9E27AA12156C9ED00718AB5 /* StartListTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -143,6 +172,24 @@
 				A9E27A882156947000718AB5 /* PostTradeInput.swift */,
 			);
 			path = Autogenerated;
+			sourceTree = "<group>";
+		};
+		A9E27A922156B15000718AB5 /* External Code */ = {
+			isa = PBXGroup;
+			children = (
+				A9E27A932156B31500718AB5 /* JustHUD.swift */,
+			);
+			path = "External Code";
+			sourceTree = "<group>";
+		};
+		A9E27AA42156D47700718AB5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A9E27AA52156D48600718AB5 /* Utils.swift */,
+				A9E27AA72156DDBA00718AB5 /* Constants.swift */,
+				A9E27AA92156DE7C00718AB5 /* Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		A9F3336C21559E4B002E159F = {
@@ -167,6 +214,7 @@
 		A9F3337721559E4B002E159F /* CHTestClient */ = {
 			isa = PBXGroup;
 			children = (
+				A9E27AA42156D47700718AB5 /* Utils */,
 				A91F78702155B6DC0066048E /* Models */,
 				A91F786621559FD50066048E /* Views */,
 				A91F786521559FCD0066048E /* Controllers */,
@@ -176,6 +224,7 @@
 				A9F3337F21559E4C002E159F /* Assets.xcassets */,
 				A9F3338121559E4C002E159F /* LaunchScreen.storyboard */,
 				A9F3338421559E4C002E159F /* Info.plist */,
+				A9E27A922156B15000718AB5 /* External Code */,
 			);
 			path = CHTestClient;
 			sourceTree = "<group>";
@@ -250,6 +299,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9E27AA32156C9ED00718AB5 /* StartListTableViewCell.xib in Resources */,
+				A9E27A9F2156C14A00718AB5 /* LoadingTableViewCell.xib in Resources */,
+				A9E27A9B2156C0EE00718AB5 /* CoinInfoTableViewCell.xib in Resources */,
 				A91F786B2155B2010066048E /* MainStoryboard.storyboard in Resources */,
 				A9F3338321559E4C002E159F /* LaunchScreen.storyboard in Resources */,
 				A9E27A8F21569B4700718AB5 /* README.md in Resources */,
@@ -301,11 +353,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CHTestClient/Pods-CHTestClient-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CDAlertView/CDAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,17 +375,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9F3337921559E4B002E159F /* AppDelegate.swift in Sources */,
+				A9E27A942156B31500718AB5 /* JustHUD.swift in Sources */,
 				A9C9A95021567EBC00831BCD /* CoinData.swift in Sources */,
 				A9E27A7F2156833F00718AB5 /* CoinDetailResponse.swift in Sources */,
 				A9E27A862156901700718AB5 /* PortfolioResponse.swift in Sources */,
 				A91F786D2155B2530066048E /* CryptocurrenciesListViewController.swift in Sources */,
+				A9E27AA82156DDBA00718AB5 /* Constants.swift in Sources */,
+				A9E27A9A2156C0EE00718AB5 /* CoinInfoTableViewCell.swift in Sources */,
+				A9E27AA62156D48600718AB5 /* Utils.swift in Sources */,
 				A9E27A8C215694EC00718AB5 /* Trade.swift in Sources */,
 				A9C9A95121567EBC00831BCD /* Coins.swift in Sources */,
+				A9E27A9121569FD200718AB5 /* BaseViewController.swift in Sources */,
+				A9E27A9E2156C14A00718AB5 /* LoadingTableViewCell.swift in Sources */,
 				A9E27A8D215694EC00718AB5 /* PostTradeResponse.swift in Sources */,
 				A9E27A8221568E1100718AB5 /* Historical.swift in Sources */,
 				A91F786F2155B2AC0066048E /* CryptocurrenciesListViewModel.swift in Sources */,
+				A9E27AA22156C9ED00718AB5 /* StartListTableViewCell.swift in Sources */,
 				A9C9A95221567EBC00831BCD /* CoinResponse.swift in Sources */,
 				A9E27A8321568E1100718AB5 /* HistoricalResponse.swift in Sources */,
+				A9E27AAA2156DE7C00718AB5 /* Extensions.swift in Sources */,
 				A9C9A9452156596900831BCD /* NetworkDataSource.swift in Sources */,
 				A9E27A872156901700718AB5 /* PortfolioCoins.swift in Sources */,
 				A91F78682155A0370066048E /* CryptojetioDataSource.swift in Sources */,
