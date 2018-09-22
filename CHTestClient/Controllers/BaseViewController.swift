@@ -10,12 +10,14 @@ import UIKit
 import CDAlertView
 
 protocol NetworkingViewProtocol {
-    func startDownload(requestIdentifier:String?)
-    func stopDownload(requestIdentifier:String?, withError error:NetworkDataSourceError?)
+    func startDownload()
+    func stopDownload(withError error:NetworkDataSourceError?)
 }
 
 class BaseViewController: UIViewController, NetworkingViewProtocol {
 
+    var useLargeTitleAtNavigationBar : Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,8 +25,12 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
         JustHUD.setBackgroundColor(color: UIColor.black, automaticTextColor: true)
         JustHUD.setLoaderColor(color: Constants.colors.defaultColor)
 
-        navigationController?.navigationBar.prefersLargeTitles = true;
         navigationItem.largeTitleDisplayMode = .automatic;
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = useLargeTitleAtNavigationBar;
     }
     
     //MARK: - UI Methods
@@ -66,17 +72,17 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
     
     
     //MARK: - Networking protocol
-    func startDownload(requestIdentifier:String?) {
+    func startDownload() {
         showHud()
     }
     
-    func stopDownload(requestIdentifier:String?, withError error: NetworkDataSourceError?) {
+    func stopDownload(withError error: NetworkDataSourceError?) {
         if let error = error {
             var alertType : CDAlertViewType = .error
             if (error == .NetworkError) {
                 alertType = .warning
             }
-            self.showAlert(title: "Error", message: error.getLocalizedErrorDescription(), leftTextButton: "Aceptar", rightTextButton: nil, alertType: alertType)
+            self.showAlert(title: "Error".localized(), message: error.getLocalizedErrorDescription(), leftTextButton: "OK".localized(), rightTextButton: nil, alertType: alertType)
         }
         hideHud()
     }

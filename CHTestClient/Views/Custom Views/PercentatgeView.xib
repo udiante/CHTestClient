@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PercentatgeView" customModule="CHTestClient" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="vJI-RP-QOK" id="0dQ-ld-N6I"/>
+                <outlet property="lblDescription" destination="Dxv-NO-9fv" id="Ufx-1H-kPs"/>
+                <outlet property="lblPercentatge" destination="B2m-YC-CKH" id="Ptz-cz-RqI"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="309" height="227"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJI-RP-QOK" userLabel="change">
+                    <rect key="frame" x="0.0" y="0.0" width="309" height="227"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="B2m-YC-CKH">
+                            <rect key="frame" x="0.0" y="0.0" width="309" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dxv-NO-9fv">
+                            <rect key="frame" x="0.0" y="29" width="309" height="16"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="B2m-YC-CKH" firstAttribute="top" secondItem="vJI-RP-QOK" secondAttribute="top" id="1Ch-Dj-pPV"/>
+                        <constraint firstAttribute="trailing" secondItem="B2m-YC-CKH" secondAttribute="trailing" id="1zv-o9-EER"/>
+                        <constraint firstItem="Dxv-NO-9fv" firstAttribute="leading" secondItem="vJI-RP-QOK" secondAttribute="leading" id="Ywu-3d-uQ3"/>
+                        <constraint firstItem="Dxv-NO-9fv" firstAttribute="top" secondItem="B2m-YC-CKH" secondAttribute="bottom" constant="5" id="jD4-jF-bMO"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Dxv-NO-9fv" secondAttribute="bottom" id="lrV-7t-Tcb"/>
+                        <constraint firstItem="B2m-YC-CKH" firstAttribute="leading" secondItem="vJI-RP-QOK" secondAttribute="leading" id="n06-Zd-zCf"/>
+                        <constraint firstAttribute="trailing" secondItem="Dxv-NO-9fv" secondAttribute="trailing" id="o32-UG-X1P"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vJI-RP-QOK" secondAttribute="trailing" id="P7T-KT-KVO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="vJI-RP-QOK" secondAttribute="bottom" id="b4a-5E-vEO"/>
+                <constraint firstItem="vJI-RP-QOK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cBZ-fF-hlo"/>
+                <constraint firstItem="vJI-RP-QOK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="otE-QN-aky"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-24.800000000000001" y="-153.37331334332833"/>
+        </view>
+    </objects>
+</document>

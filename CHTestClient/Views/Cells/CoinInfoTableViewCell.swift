@@ -27,7 +27,7 @@ class CoinInfoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(withViewModel cellViewModel:CryptocurrenciesListCellViewModel) {
+    func configure(withViewModel cellViewModel:CryptocurrenciesCoinCellViewModel) {
         self.lblName.text = cellViewModel.name
         self.lblValue.text = cellViewModel.getFormattedUSDAmount()
         self.lblPercentatge.text = cellViewModel.getPercentatgeFormatted()

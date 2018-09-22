@@ -22,6 +22,8 @@ class CryptocurrenciesListViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.useLargeTitleAtNavigationBar = true
 
         coinsTableView.register(UINib(nibName: "CoinInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "CoinInfoTableViewCell")
         coinsTableView.register(UINib(nibName: "LoadingTableViewCell", bundle: nil), forCellReuseIdentifier: "LoadingTableViewCell")
@@ -49,27 +51,27 @@ class CryptocurrenciesListViewController: BaseViewController {
         super.viewDidAppear(animated)
     }
     
-    override func stopDownload(requestIdentifier: String?, withError error: NetworkDataSourceError?) {
+    override func stopDownload(withError error: NetworkDataSourceError?) {
         if let currentRequest = self.viewModel.currentRequest {
             if currentRequest == .currencyList || currentRequest == .currencyListPage {
                 self.reloadData()
             }
             if currentRequest == .currencyListPage {
                 // Silent request without warning
-                super.stopDownload(requestIdentifier: nil, withError: nil)
+                super.stopDownload(withError: nil)
                 return
             }
         }
         refreshControl.endRefreshing()
-        super.stopDownload(requestIdentifier: requestIdentifier, withError: error)
+        super.stopDownload(withError: error)
     }
     
     
-    override func startDownload(requestIdentifier: String?) {
+    override func startDownload() {
         if let currentRequest = self.viewModel.currentRequest, currentRequest == .currencyListPage || refreshControl.isRefreshing {
             return
         }
-        super.startDownload(requestIdentifier: nil)
+        super.startDownload()
     }
     
     func reloadData(){
@@ -98,8 +100,8 @@ extension CryptocurrenciesListViewController : UITableViewDelegate, UITableViewD
         }
         switch cellVM.type {
         case .coinInfo:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: cellVM.type.rawValue, for: indexPath) as? CoinInfoTableViewCell {
-                cell.configure(withViewModel: cellVM)
+            if let cell = tableView.dequeueReusableCell(withIdentifier: cellVM.type.rawValue, for: indexPath) as? CoinInfoTableViewCell, let cellCoinVM = cellVM as? CryptocurrenciesCoinCellViewModel {
+                cell.configure(withViewModel: cellCoinVM)
                 return cell
             }
         case .loadingInfo:
@@ -122,6 +124,14 @@ extension CryptocurrenciesListViewController : UITableViewDelegate, UITableViewD
             // Load next page
             self.viewModel.loadCoins(delegate: self)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let coin = (self.viewModel.getCellVM(atIndex: indexPath.row) as? CryptocurrenciesCoinCellViewModel)?.coinModel else {
+            return
+        }
+        let vc = CoinDetailViewController.storyBoardInstance(withCoinModel: coin)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

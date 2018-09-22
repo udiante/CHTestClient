@@ -38,4 +38,17 @@ class Utils: NSObject {
         return formatter.string(from: NSNumber(value: value)) ?? rawValue
     }
     
+    
+    static func colorForValue(_ rawValue:String?)->UIColor{
+        guard let value = Double(rawValue ?? "") else {
+            return Constants.colors.defaultColor
+        }
+        if value > 0 {
+            return Constants.colors.positiveColor
+        }
+        else if value < 0 {
+            return Constants.colors.negativeColor
+        }
+        return Constants.colors.defaultColor
+    }
 }

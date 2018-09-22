@@ -17,9 +17,9 @@ public enum NetworkDataSourceError : Error {
     func getLocalizedErrorDescription()->String {
         switch self {
         case .NetworkError:
-            return "Parece que no estás conectado a internet, vuevle a intentrarlo más tarde"
+            return "No internet connection, try again later".localized()
         default:
-            return "Error al realizar la petición"
+            return "Error, try again later".localized()
         }
     }
 }

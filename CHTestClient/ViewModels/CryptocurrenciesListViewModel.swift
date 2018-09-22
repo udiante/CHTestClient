@@ -23,15 +23,8 @@ class CryptocurrenciesListCellViewModel {
     fileprivate (set) var name:String?
     fileprivate (set) var currentPrice:String?
     fileprivate (set) var percentatgeChange24Hours:String?
-    let type:CellTypeCryptocurrenciesListViewModel
+    fileprivate (set) var type:CellTypeCryptocurrenciesListViewModel
 
-    
-    init(withCoinModel coinModel:CoinData){
-        self.type = .coinInfo
-        self.name = coinModel.name
-        self.currentPrice = coinModel.price_usd
-        self.percentatgeChange24Hours = coinModel.percent_change_24h
-    }
     
     init(){
         self.type = .loadingInfo
@@ -43,6 +36,20 @@ class CryptocurrenciesListCellViewModel {
         self.title = infoTitle
         self.icon = icon
     }
+}
+
+class CryptocurrenciesCoinCellViewModel : CryptocurrenciesListCellViewModel {
+    
+    let coinModel : CoinData?
+    
+    required init(withCoinModel coinModel:CoinData){
+        self.coinModel = coinModel
+        super.init()
+        self.type = .coinInfo
+        self.name = coinModel.name
+        self.currentPrice = coinModel.price_usd
+        self.percentatgeChange24Hours = coinModel.percent_change_24h
+    }
     
     func getFormattedUSDAmount()->String{
         return Utils.formatAmountString(self.currentPrice ?? "0", decimalPlaces: 4, currencySymbol: "$")
@@ -53,10 +60,11 @@ class CryptocurrenciesListCellViewModel {
     }
     
     func getPercentatgeDescription()->String {
-        return "Últimas 24 horas".localized()
+        return "Last 24 hours".localized()
     }
     
     func getPercentatgeColor()->UIColor {
+        Utils.colorForValue(self.percentatgeChange24Hours)
         guard let value = Double(self.percentatgeChange24Hours ?? "") else {
             return Constants.colors.defaultColor
         }
@@ -91,7 +99,7 @@ class CryptocurrenciesListViewModel: NSObject {
     
     private func requestEnded(withError error:NetworkDataSourceError?, delegate:NetworkingViewProtocol) {
         DispatchQueue.main.async {
-            delegate.stopDownload(requestIdentifier: nil, withError: error)
+            delegate.stopDownload(withError: error)
             self.currentRequest = nil
         }
     }
@@ -114,12 +122,12 @@ class CryptocurrenciesListViewModel: NSObject {
         if let nextPageUrl = self.nextPageUrl{
             // Load next page
             self.currentRequest = .currencyListPage
-            delegate.startDownload(requestIdentifier: nil)
+            delegate.startDownload()
             CryptojetioDataSource.getCoins(atPage: nextPageUrl, completionHandler: currencyCompletionHandler)
         }
         else {
             self.currentRequest = .currencyList
-            delegate.startDownload(requestIdentifier: nil)
+            delegate.startDownload()
             CryptojetioDataSource.getCoins(completionHandler: currencyCompletionHandler)
         }
     }
@@ -127,7 +135,7 @@ class CryptocurrenciesListViewModel: NSObject {
     func updateCellsVM(){
         cellsVM = [CryptocurrenciesListCellViewModel]()
         for coin in self.fetchedCoins {
-            let cellVM = CryptocurrenciesListCellViewModel(withCoinModel: coin)
+            let cellVM = CryptocurrenciesCoinCellViewModel(withCoinModel: coin)
             cellsVM.append(cellVM)
         }
         if self.nextPageUrl != nil {
