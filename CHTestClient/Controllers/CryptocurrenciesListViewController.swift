@@ -27,7 +27,7 @@ class CryptocurrenciesListViewController: BaseViewController {
         coinsTableView.register(UINib(nibName: "LoadingTableViewCell", bundle: nil), forCellReuseIdentifier: "LoadingTableViewCell")
         coinsTableView.register(UINib(nibName: "StartListTableViewCell", bundle: nil), forCellReuseIdentifier: "StartListTableViewCell")
         
-        self.title = "Cryptoexchange".localized()
+        self.title = "Cryptocurrencies".localized()
 
         coinsTableView.contentInset.top = 20
         coinsTableView.separatorStyle = .none
@@ -36,6 +36,7 @@ class CryptocurrenciesListViewController: BaseViewController {
         coinsTableView.dataSource = self
         
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refreshControl.tintColor = UIColor.white
         coinsTableView.refreshControl = refreshControl
     }
     

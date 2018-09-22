@@ -10,7 +10,7 @@ import UIKit
 
 struct Constants {
     struct colors {
-        static let defaultColor = UIColor.black
+        static let defaultColor = UIColor.white
         static let positiveColor = UIColor.green
         static let negativeColor = UIColor.red
     }

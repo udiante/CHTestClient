@@ -42,6 +42,7 @@
                         </connections>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="1GP-KI-MBx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="534-5D-vtT"/>
                     <constraint firstItem="H8g-lQ-shM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="84k-Oe-c5S"/>
@@ -54,6 +55,7 @@
                     <constraint firstItem="1GP-KI-MBx" firstAttribute="top" secondItem="9T3-9m-mhM" secondAttribute="bottom" constant="40" id="lLw-ki-Zk6"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="btn" destination="1GP-KI-MBx" id="2nj-uE-vrK"/>

@@ -20,7 +20,9 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        JustHUD.setBackgroundColor(color: UIColor.white, automaticTextColor: true)
+        JustHUD.setBackgroundColor(color: UIColor.black, automaticTextColor: true)
+        JustHUD.setLoaderColor(color: Constants.colors.defaultColor)
+
         navigationController?.navigationBar.prefersLargeTitles = true;
         navigationItem.largeTitleDisplayMode = .automatic;
     }

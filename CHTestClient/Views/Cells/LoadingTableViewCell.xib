@@ -18,10 +18,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="318" height="84.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cqp-cR-8Ys">
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="cqp-cR-8Ys">
                         <rect key="frame" x="36" y="31" width="246" height="23"/>
                     </activityIndicatorView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="cqp-cR-8Ys" secondAttribute="trailing" constant="20" id="18i-Hs-1o8"/>
                     <constraint firstAttribute="bottomMargin" secondItem="cqp-cR-8Ys" secondAttribute="bottom" constant="20" id="3nr-Mz-oOk"/>
@@ -29,6 +30,7 @@
                     <constraint firstItem="cqp-cR-8Ys" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="ZVJ-nJ-a8i"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <point key="canvasLocation" x="136" y="165.96701649175412"/>
         </tableViewCell>
