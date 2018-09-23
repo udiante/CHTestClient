@@ -39,6 +39,9 @@ class CoinDetailViewController: BaseViewController {
         self.title = viewModel.getTitle()
         self.downloadChartData()
         self.chartView.noDataText = "Downloading chart data...".localized()
+        
+        //Exchange cryptocurrency
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPressed))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -156,6 +159,11 @@ class CoinDetailViewController: BaseViewController {
     
     func showChart(){
         chartView.animate(xAxisDuration: 1, yAxisDuration: 1)
+    }
+    
+    @objc func addPressed(){
+        let vc = ExchangeViewController.storyBoardInstance(withCoinModel: self.viewModel.coinModel)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

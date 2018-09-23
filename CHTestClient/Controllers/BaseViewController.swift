@@ -57,7 +57,10 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
             return
         }
         let alert = CDAlertView(title: title, message: message, type: alertType)
-        alert.hideAnimationDuration = 0
+        alert.hideAnimationDuration = 0.10
+        alert.hideAnimations = { (center, transform, alpha) in
+            alpha = 0
+        }
         if let leftActionText = leftTextButton {
             let actionLeft = CDAlertViewAction(title: leftActionText, font: nil, textColor: nil, backgroundColor: nil) { (action) -> Bool in
                 self.alertLeftActionPressed()

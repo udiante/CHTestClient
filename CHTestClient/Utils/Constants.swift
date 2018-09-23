@@ -13,6 +13,8 @@ struct Constants {
         static let defaultColor = UIColor.white
         static let positiveColor = UIColor.green
         static let negativeColor = UIColor.red
+        static let disabledColor = UIColor.gray.withAlphaComponent(0.6)
+        static let enabledWhiteStyleColor = UIColor.black
     }
     
     struct symbols {

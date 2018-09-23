@@ -38,7 +38,7 @@ class CoinDetailViewModel: NSObject {
     fileprivate let kDefaultDecimalPlaces = 2
     fileprivate var historicalData = [Historical]()
 
-    private let coinModel : CoinData
+    fileprivate (set) var coinModel : CoinData
 
     init(withCoinModel coinModel:CoinData){
         self.coinModel = coinModel
