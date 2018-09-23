@@ -35,4 +35,13 @@ class CoinInfoTableViewCell: UITableViewCell {
         self.lblPercentatgeDesc.text = cellViewModel.getPercentatgeDescription()
     }
     
+    func configure(withViewModel cellViewModel:PortfolioTradeCellViewModel) {
+        self.lblName.text = cellViewModel.getCellTitle()
+        self.lblValue.text = cellViewModel.getTotalCoinAmount()
+        self.lblPercentatge.text = cellViewModel.getTotalUSDValue()
+        self.lblPercentatge.font = UIFont.italicSystemFont(ofSize: 15)
+        self.lblPercentatge.textColor = Constants.colors.defaultColor
+        self.lblPercentatgeDesc.text = "(USD Value)".localized()
+    }
+    
 }

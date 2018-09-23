@@ -60,15 +60,22 @@ class RealmDataSource: NSObject {
         return realm.objects(CoinModel.self).filter("identifier == %i", identifier).first
     }
     
-    func getPortFolioModel(withIdentifier identifier:Int)->PortfolioModel?{
+    func getPortfolioModel(withIdentifier identifier:Int)->PortfolioModel?{
         guard let realm = self.getRealm() else {
             return nil
         }
         return realm.objects(PortfolioModel.self).filter("coinIdentifier == %i", identifier).first
     }
     
+    func getAllPortfolios()->[PortfolioModel]{
+        guard let realm = self.getRealm() else {
+            return []
+        }
+        return realm.objects(PortfolioModel.self).map({$0})
+    }
+    
     func updatePortFolioModelCoin(_ coinId:Int){
-        guard let realm = self.getRealm(), let coinModel = getCoinModel(withIdentifier: coinId), let portfolioModel = getPortFolioModel(withIdentifier: coinId) else {
+        guard let realm = self.getRealm(), let coinModel = getCoinModel(withIdentifier: coinId), let portfolioModel = getPortfolioModel(withIdentifier: coinId) else {
             return
         }
         do {

@@ -14,4 +14,14 @@ struct Constants {
         static let positiveColor = UIColor.green
         static let negativeColor = UIColor.red
     }
+    
+    struct symbols {
+        static let USD_DOLLAR = "$"
+    }
+    
+    struct decimalPlaces {
+        static let CPYPTOCURRENCY = 5
+        static let USD_DOLLAR = 2
+        static let PERCENT = 2
+    }
 }

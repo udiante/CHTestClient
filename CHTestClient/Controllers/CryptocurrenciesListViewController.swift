@@ -13,7 +13,6 @@ class CryptocurrenciesListViewController: BaseViewController {
     fileprivate let viewModel = CryptocurrenciesListViewModel()
     fileprivate var cells = [CryptocurrenciesListCellViewModel]()
     @IBOutlet private weak var coinsTableView: UITableView!
-    fileprivate let refreshControl = UIRefreshControl()
     var statusBarStyle : UIStatusBarStyle = .default
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -37,8 +36,6 @@ class CryptocurrenciesListViewController: BaseViewController {
         coinsTableView.delegate = self
         coinsTableView.dataSource = self
         
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
-        refreshControl.tintColor = UIColor.white
         coinsTableView.refreshControl = refreshControl
         
         self.refreshData()
@@ -67,7 +64,6 @@ class CryptocurrenciesListViewController: BaseViewController {
                 return
             }
         }
-        refreshControl.endRefreshing()
         super.stopDownload(withError: error)
     }
     
@@ -85,9 +81,8 @@ class CryptocurrenciesListViewController: BaseViewController {
         self.coinsTableView.reloadData()
     }
     
-    @objc func refreshData(){
+    @objc override func refreshData(){
         viewModel.resetCoins()
-        self.coinsTableView.bounces = !(self.viewModel.getNumberOfCells() == 1)
         viewModel.loadCoins(delegate: self)
     }
     

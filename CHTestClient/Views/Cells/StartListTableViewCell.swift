@@ -36,14 +36,22 @@ class StartListTableViewCell: UITableViewCell {
     }
     
     func configure(withViewModel cellViewModel:CryptocurrenciesListCellViewModel) {
-        self.lblTitle.text = cellViewModel.title
-        if let textButton = cellViewModel.buttonText {
+        self.configure(title: cellViewModel.title, buttonText: cellViewModel.buttonText, icon: cellViewModel.icon)
+    }
+    
+    func configure(withViewModel cellViewModel:PortfolioCellViewModel) {
+        self.configure(title: cellViewModel.title, buttonText: cellViewModel.btnText, icon: cellViewModel.icon)
+    }
+    
+    func configure(title:String?, buttonText:String?, icon:UIImage?){
+        self.lblTitle.text = title
+        if let textButton = buttonText {
             btn.isHidden = false
             btn.setTitle(textButton, for: .normal)
         }
         else {
             btn.isHidden = true
         }
-        iconImageView.image = cellViewModel.icon
+        iconImageView.image = icon
     }
 }

@@ -8,7 +8,61 @@
 
 import UIKit
 
+class PortfolioCellViewModel : NSObject {
+
+    fileprivate let defaultNoDataValue = "-"
+    
+    enum CellTypes {
+        case TradeCell
+        case InfoCell
+        case TitleCell
+    }
+    
+    fileprivate (set) var type : CellTypes
+    
+    fileprivate (set) var title : String?
+    fileprivate (set) var subtitle : String?
+    fileprivate (set) var btnText : String?
+    fileprivate (set) var icon : UIImage?
+
+    init(withType cellType:CellTypes) {
+        self.type = cellType
+    }
+    
+    init(infoCellWithTitle title:String?, btnText:String?, icon:UIImage?){
+        self.title = title
+        self.btnText = btnText
+        self.icon = icon
+        self.type = .InfoCell
+    }
+    
+}
+
+class PortfolioTradeCellViewModel : PortfolioCellViewModel {
+    
+    let portfolioModel:PortfolioModel
+
+    init(withPortFolioModel portfolioModel:PortfolioModel) {
+        self.portfolioModel = portfolioModel
+        super.init(withType: .TradeCell)
+    }
+    
+    func getCellTitle()->String {
+        return "\(self.portfolioModel.coin?.name ?? defaultNoDataValue)"
+    }
+    
+    func getTotalCoinAmount()->String {
+        return "\(Utils.formatAmount(self.portfolioModel.amount, decimalPlaces: Constants.decimalPlaces.CPYPTOCURRENCY, currencySymbol: "")) \(self.portfolioModel.coin?.symbol ?? "")"
+    }
+    
+    func getTotalUSDValue()->String{
+        return Utils.formatAmount(self.portfolioModel.priceUSD, decimalPlaces: Constants.decimalPlaces.USD_DOLLAR, currencySymbol: Constants.symbols.USD_DOLLAR)
+    }
+}
+
 class PortfolioViewModel: NSObject {
+    
+    fileprivate var cellsVM = [PortfolioCellViewModel]()
     
     let realmDataSource = RealmDataSource()
     
@@ -48,6 +102,41 @@ class PortfolioViewModel: NSObject {
         CryptojetioDataSource.getCoinDetail(withCoinIdentifier: String(id)) { (error, coinModel) in
             self.downloadCoinsById(ids: mutableIds, completionHandler: completionHandler)
         }
+    }
+    
+    func updateCellsVM(){
+        cellsVM = [PortfolioCellViewModel]()
+        var totalUSDCost = 0.0;
+        for portfolio in realmDataSource.getAllPortfolios() {
+            let cellVM = PortfolioTradeCellViewModel(withPortFolioModel: portfolio)
+            cellsVM.append(cellVM)
+            totalUSDCost += portfolio.priceUSD
+        }
+        if (cellsVM.count == 0){
+            let cellVM = PortfolioCellViewModel(infoCellWithTitle: "Press download to download your portfolio".localized(), btnText: "Download".localized(), icon: UIImage(named: "chip")?.withRenderingMode(.alwaysTemplate))
+            cellsVM.append(cellVM)
+        }
+        else {
+            let cellVM = PortfolioCellViewModel(withType: .TitleCell)
+            var decimalPlaces = Constants.decimalPlaces.USD_DOLLAR
+            if totalUSDCost > 1000 {
+                decimalPlaces = 0
+            }
+            cellVM.title = Utils.formatAmount(totalUSDCost, decimalPlaces: decimalPlaces, currencySymbol: Constants.symbols.USD_DOLLAR)
+            cellVM.subtitle = "(Total Value)".localized()
+            cellsVM.insert(cellVM, at: 0)
+        }
+    }
+    
+    func getCellVM(atIndex index:Int)->PortfolioCellViewModel?{
+        guard index < self.cellsVM.count, index >= 0 else {
+            return nil
+        }
+        return self.cellsVM[index]
+    }
+    
+    func getNumberOfCells()->Int{
+        return self.cellsVM.count
     }
 
 }

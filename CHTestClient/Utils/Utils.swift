@@ -28,7 +28,7 @@ class Utils: NSObject {
         return formatter.string(from: NSNumber(value: value)) ?? value.description
     }
     
-    static func formattPercent(_ rawValue:String, decimalPlaces:Int)->String{
+    static func formattPercent(_ rawValue:String, decimalPlaces:Int=Constants.decimalPlaces.PERCENT)->String{
         guard let value = Double(rawValue) else {
             return rawValue
         }

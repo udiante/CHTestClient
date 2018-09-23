@@ -52,11 +52,11 @@ class CryptocurrenciesCoinCellViewModel : CryptocurrenciesListCellViewModel {
     }
     
     func getFormattedUSDAmount()->String{
-        return Utils.formatAmountString(self.currentPrice ?? "0", decimalPlaces: 4, currencySymbol: "$")
+        return Utils.formatAmountString(self.currentPrice ?? "0", decimalPlaces: Constants.decimalPlaces.USD_DOLLAR, currencySymbol: Constants.symbols.USD_DOLLAR)
     }
     
     func getPercentatgeFormatted()->String {
-        return Utils.formattPercent(self.percentatgeChange24Hours ?? "", decimalPlaces: 2);
+        return Utils.formattPercent(self.percentatgeChange24Hours ?? "");
     }
     
     func getPercentatgeDescription()->String {

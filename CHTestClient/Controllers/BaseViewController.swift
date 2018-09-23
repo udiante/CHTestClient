@@ -17,6 +17,8 @@ protocol NetworkingViewProtocol {
 class BaseViewController: UIViewController, NetworkingViewProtocol {
 
     var useLargeTitleAtNavigationBar : Bool = true
+    fileprivate (set) var refreshControl = UIRefreshControl()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,9 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
         // Do any additional setup after loading the view.
         JustHUD.setBackgroundColor(color: UIColor.black, automaticTextColor: true)
         JustHUD.setLoaderColor(color: Constants.colors.defaultColor)
-
+        
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refreshControl.tintColor = UIColor.white
         navigationItem.largeTitleDisplayMode = .automatic;
     }
     
@@ -53,6 +57,7 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
             return
         }
         let alert = CDAlertView(title: title, message: message, type: alertType)
+        alert.hideAnimationDuration = 0
         if let leftActionText = leftTextButton {
             let actionLeft = CDAlertViewAction(title: leftActionText, font: nil, textColor: nil, backgroundColor: nil) { (action) -> Bool in
                 self.alertLeftActionPressed()
@@ -89,6 +94,13 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
     }
     
     
+    // MARK: - Refresh Controll
+    
+    ///This functions must be overrided
+    @objc open func refreshData() {
+        
+    }
+    
     //MARK: - Networking protocol
     func startDownload() {
         showHud()
@@ -102,6 +114,7 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
             }
             self.showAlert(title: "Error".localized(), message: error.getLocalizedErrorDescription(), leftTextButton: self.getLeftButtonDownloadErrorText(), rightTextButton: self.getRightButtonDownloadErrorText(), alertType: alertType)
         }
+        refreshControl.endRefreshing()
         hideHud()
     }
     

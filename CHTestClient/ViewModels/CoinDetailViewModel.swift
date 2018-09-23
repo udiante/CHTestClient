@@ -22,7 +22,7 @@ class CoinHistoricalChartModel {
     }
 
     func getFormattedValue()->String {
-        return Utils.formatAmount(self.usdValue, decimalPlaces: 5, currencySymbol: "$")
+        return Utils.formatAmount(self.usdValue, decimalPlaces: Constants.decimalPlaces.USD_DOLLAR, currencySymbol: Constants.symbols.USD_DOLLAR)
     }
     
     func getFormattedDate()->String{
