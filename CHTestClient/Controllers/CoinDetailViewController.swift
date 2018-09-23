@@ -162,8 +162,8 @@ class CoinDetailViewController: BaseViewController {
     }
     
     @objc func addPressed(){
-        let vc = ExchangeViewController.storyBoardInstance(withCoinModel: self.viewModel.coinModel)
-        self.navigationController?.pushViewController(vc, animated: true)
+        let navC = ExchangeViewController.storyBoardInstanceWithNavigationController(withCoinModel: self.viewModel.coinModel)
+        self.present(navC, animated: true, completion: nil)
     }
 }
 

@@ -35,6 +35,16 @@ class ExchangeViewController: BaseViewController {
         return vc
     }
     
+    static func storyBoardInstanceWithNavigationController(withCoinModel coinModel:CoinData)->UINavigationController {
+        let vc = storyBoardInstance(withCoinModel: coinModel)
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.navigationBar.barStyle = .black
+        navVC.navigationBar.tintColor = UIColor.white
+        navVC.navigationBar.isTranslucent = false
+        navVC.navigationBar.shadowImage = UIImage()
+        return navVC
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.useLargeTitleAtNavigationBar = false
@@ -45,6 +55,18 @@ class ExchangeViewController: BaseViewController {
         
         txtFieldAmountCryptoCurrency.delegate = self
         txtFieldUSDValue.delegate = self
+        
+        if let navC = self.navigationController, navC.viewControllers.count == 1 {
+            // The VC is presented modally with a navC as a root.
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dissmiss))
+        }
+
+        txtFieldAmountCryptoCurrency.placeholder = "Amount to purchase".localized()
+        txtFieldUSDValue.placeholder = "Amount of dollars to sell".localized()
+        
+        lblLeftCryptoAmount.text = "\(self.viewModel.getCoinSymbol()) Amount:".localized()
+        lblLeftUSDValue.text = "USD Amount:".localized()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,8 +76,8 @@ class ExchangeViewController: BaseViewController {
         lblSubtitle.text = self.viewModel.getSubtitleAvailable()
     }
     
-    func dissmiss(){
-        if let navC = self.navigationController {
+    @objc func dissmiss(){
+        if let navC = self.navigationController, navC.viewControllers.count > 1 {
             navC.popViewController(animated: true)
         }
         else {
@@ -81,7 +103,7 @@ class ExchangeViewController: BaseViewController {
         guard let alertText = self.viewModel.getAlertMessage() else {
             return
         }
-        self.currentAlert = self.showAlert(title: "User confirmation".localized(), message: alertText, leftTextButton: "Yes, perform exchange".localized(), rightTextButton: "Cancel".localized(), alertType: .notification)
+        self.currentAlert = self.showAlert(title: "Confirmation required".localized(), message: alertText, leftTextButton: "Confirm".localized(), rightTextButton: "Cancel".localized(), alertType: .notification)
     }
     
     override func alertLeftActionPressed() {
@@ -106,9 +128,8 @@ class ExchangeViewController: BaseViewController {
     override func stopDownload(withError error: NetworkDataSourceError?) {
         super.stopDownload(withError: error)
         if error == nil {
-            // Finished
             if let alert = self.showAlert(title: "Success".localized(), message: "Exchange completed".localized(), leftTextButton: nil, rightTextButton: nil, alertType: .success) {
-                _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+                _ = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
                     alert.hide(isPopupAnimated: false)
                     self.dissmiss()
                 }

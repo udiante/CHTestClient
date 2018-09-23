@@ -34,7 +34,7 @@ class ExchangeViewModel: NSObject {
     func getSubtitleAvailable()->String {
         if let available = self.coinModel.available_supply {
             let avaialbleString = Utils.formatAmount(Double(available), decimalPlaces: 0, currencySymbol: "")
-            let baseString = "(%@ availble)".localized()
+            let baseString = "(%@ units availble)".localized()
             return String(format: baseString, avaialbleString)
 
         }
@@ -43,6 +43,10 @@ class ExchangeViewModel: NSObject {
     
     func getPriceUSD()->Double{
         return Double(self.coinModel.price_usd ?? "0") ?? 0.0
+    }
+    
+    func getCoinSymbol()->String {
+        return self.coinModel.symbol ?? ""
     }
     
     /// Sets the current amount of the cryptocurrency that the users want to exchange and returns their equivalent in USD. If the value returned is null the amount is invalid
@@ -88,12 +92,12 @@ class ExchangeViewModel: NSObject {
         let baseString : String!
         if amount >= 0 {
             // The user want to buy cryptocurrency //ie: You're going to buy 1 BTC paying $90000
-            baseString = "You're going to buy %@ %@ paying %@".localized()
+            baseString = "You're going to buy %@ %@ paying %@.\nAre you sure?".localized()
         }
         else {
-            // The user wants to sell cryptocurrency //ie: You're going to sell 1 BTC getting $90000
+            // The user want to sell cryptocurrency //ie: You're going to sell 1 BTC getting $90000
             amount = amount * -1
-            baseString = "You're going to sell %@ %@ getting %@".localized()
+            baseString = "You're going to sell %@ %@ getting %@\nAre you sure?".localized()
         }
         return String(format: baseString, Utils.formatAmount(amount, decimalPlaces: kDefaultDecimalPlaces, currencySymbol: ""), self.coinModel.symbol ?? "" ,Utils.formatAmount(self.getUSDCost(), decimalPlaces: Constants.decimalPlaces.USD_DOLLAR, currencySymbol: "$"))
     }
