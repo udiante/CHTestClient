@@ -66,6 +66,9 @@ public class NetworkDataSource: NSObject {
                     }
                 case .failure (let error):
                     self.log("Request error: \(error)")
+                    if let data = response.data, let jsonData = try? JSONSerialization.jsonObject(with: response.data!, options: [])  {
+                        self.log(jsonData)
+                    }
                     var customErrror : NetworkDataSourceError = NetworkDataSourceError.RequestError
                     if let errorCode = response.response?.statusCode {
                         if (errorCode == 401) {

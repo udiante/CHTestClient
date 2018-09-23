@@ -27,11 +27,11 @@ class PortfolioViewController: BaseViewController {
         portfolioTableView.delegate = self
         portfolioTableView.dataSource = self
         portfolioTableView.refreshControl = refreshControl
-        self.downloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.downloadData()
         self.reloadData()
     }
     

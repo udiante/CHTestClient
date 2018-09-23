@@ -52,9 +52,9 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
         JustHUD.shared.hide()
     }
     
-    func showAlert(title:String?, message:String?, leftTextButton:String?, rightTextButton:String?, alertType:CDAlertViewType){
+    func showAlert(title:String?, message:String?, leftTextButton:String?, rightTextButton:String?, alertType:CDAlertViewType, withTimer:Double?=nil)->CDAlertView?{
         guard view.window != nil else {
-            return
+            return nil
         }
         let alert = CDAlertView(title: title, message: message, type: alertType)
         alert.hideAnimationDuration = 0.10
@@ -75,7 +75,11 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
             }
             alert.add(action: actionRight)
         }
+        if let timer = withTimer {
+            alert.autoHideTime = timer
+        }
         alert.show()
+        return alert
     }
     
     open func alertLeftActionPressed(){
@@ -115,7 +119,7 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
             if (error == .NetworkError) {
                 alertType = .warning
             }
-            self.showAlert(title: "Error".localized(), message: error.getLocalizedErrorDescription(), leftTextButton: self.getLeftButtonDownloadErrorText(), rightTextButton: self.getRightButtonDownloadErrorText(), alertType: alertType)
+            _ = self.showAlert(title: "Error".localized(), message: error.getLocalizedErrorDescription(), leftTextButton: self.getLeftButtonDownloadErrorText(), rightTextButton: self.getRightButtonDownloadErrorText(), alertType: alertType)
         }
         refreshControl.endRefreshing()
         hideHud()

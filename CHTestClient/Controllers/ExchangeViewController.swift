@@ -7,21 +7,23 @@
 //
 
 import UIKit
+import CDAlertView
 
 class ExchangeViewController: BaseViewController {
     
     fileprivate (set) var viewModel : ExchangeViewModel!
     
+    fileprivate var currentAlert : CDAlertView?
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblSubtitle: UILabel!
     @IBOutlet weak var lblExchange: UILabel!
     
-    @IBOutlet weak var lblLeftAmount: UILabel!
-    @IBOutlet weak var txtFieldsAmount: UITextField!
+    @IBOutlet weak var lblLeftCryptoAmount: UILabel!
+    @IBOutlet weak var txtFieldAmountCryptoCurrency: UITextField!
     
-    @IBOutlet weak var lblLeftValue: UILabel!
-    @IBOutlet weak var txtFieldValue: UITextField!
+    @IBOutlet weak var lblLeftUSDValue: UILabel!
+    @IBOutlet weak var txtFieldUSDValue: UITextField!
     
     @IBOutlet weak var btnExchange: UIButton!
     
@@ -36,10 +38,13 @@ class ExchangeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.useLargeTitleAtNavigationBar = false
-        self.title = "New purchase".localized()
+        self.title = "New Exchange".localized()
         
         btnExchange.setTitle("Exchange".localized(), for: .normal)
         setButtonEnabled(false)
+        
+        txtFieldAmountCryptoCurrency.delegate = self
+        txtFieldUSDValue.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,5 +75,83 @@ class ExchangeViewController: BaseViewController {
             btnExchange.setTitleColor(Constants.colors.disabledColor, for: .normal)
         }
         btnExchange.isEnabled = enabled
+    }
+    
+    @IBAction func exchangePressed(_ sender: Any) {
+        guard let alertText = self.viewModel.getAlertMessage() else {
+            return
+        }
+        self.currentAlert = self.showAlert(title: "User confirmation".localized(), message: alertText, leftTextButton: "Yes, perform exchange".localized(), rightTextButton: "Cancel".localized(), alertType: .notification)
+    }
+    
+    override func alertLeftActionPressed() {
+        guard self.currentAlert != nil else {
+            super.alertLeftActionPressed()
+            return
+        }
+        // Action perform exchange
+        self.currentAlert = nil
+        self.viewModel.performExchange(delegate: self)
+    }
+    
+    override func alertRightActionPressed() {
+        guard self.currentAlert != nil else {
+            super.alertRightActionPressed()
+            return
+        }
+        // Action cancel exchange
+        self.currentAlert = nil
+    }
+    
+    override func stopDownload(withError error: NetworkDataSourceError?) {
+        super.stopDownload(withError: error)
+        if error == nil {
+            // Finished
+            if let alert = self.showAlert(title: "Success".localized(), message: "Exchange completed".localized(), leftTextButton: nil, rightTextButton: nil, alertType: .success) {
+                _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+                    alert.hide(isPopupAnimated: false)
+                    self.dissmiss()
+                }
+            }
+        }
+    }
+}
+
+extension ExchangeViewController : UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.txtFieldAmountCryptoCurrency.text = nil
+        self.txtFieldUSDValue.text = nil
+        self.setButtonEnabled(false)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {
+            return true
+        }
+        let newString = NSString(string: text).replacingCharacters(in: range, with: string)
+        if (textField == self.txtFieldAmountCryptoCurrency) {
+            // Cryptocurrency textfield
+            if let usdEquivalent = self.viewModel.setAmountToExchange(rawValue: newString) {
+                self.txtFieldUSDValue.text = usdEquivalent
+                self.setButtonEnabled(true)
+            }
+            else {
+                self.txtFieldUSDValue.text = nil
+                self.setButtonEnabled(false)
+            }
+        }
+        else {
+            // USD textfield
+            if let cryptoAmount = self.viewModel.setAmountFromUSD(rawValue: newString) {
+                self.txtFieldAmountCryptoCurrency.text = cryptoAmount
+                self.setButtonEnabled(true)
+            }
+            else {
+                self.txtFieldAmountCryptoCurrency.text = nil
+                self.setButtonEnabled(false)
+            }
+        }
+        return true;
     }
 }

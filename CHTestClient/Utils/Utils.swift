@@ -58,4 +58,8 @@ class Utils: NSObject {
     static func getDateISO8601(fromString string:String)->Date?{
         return ISO8601DateFormatter().date(from: string)
     }
+    
+    static func getDateISO8601String(atDate date:Date)->String {
+        return ISO8601DateFormatter().string(from: date)
+    }
 }

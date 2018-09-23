@@ -15,9 +15,9 @@ import Foundation
 class Trade : Codable {
 	let coin_id : Int?
 	let user_id : Int?
-	let amount : Int?
-	let price_usd : Int?
-	let total_usd : Int?
+	let amount : Double?
+	let price_usd : Double?
+	let total_usd : Double?
 	let notes : String?
 	let traded_at : String?
 	let updated_at : String?
@@ -42,9 +42,9 @@ class Trade : Codable {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		coin_id = try values.decodeIfPresent(Int.self, forKey: .coin_id)
 		user_id = try values.decodeIfPresent(Int.self, forKey: .user_id)
-		amount = try values.decodeIfPresent(Int.self, forKey: .amount)
-		price_usd = try values.decodeIfPresent(Int.self, forKey: .price_usd)
-		total_usd = try values.decodeIfPresent(Int.self, forKey: .total_usd)
+		amount = try values.decodeIfPresent(Double.self, forKey: .amount)
+		price_usd = try values.decodeIfPresent(Double.self, forKey: .price_usd)
+		total_usd = try values.decodeIfPresent(Double.self, forKey: .total_usd)
 		notes = try values.decodeIfPresent(String.self, forKey: .notes)
 		traded_at = try values.decodeIfPresent(String.self, forKey: .traded_at)
 		updated_at = try values.decodeIfPresent(String.self, forKey: .updated_at)

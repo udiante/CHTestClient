@@ -15,10 +15,10 @@ import Foundation
 
 class PostTradeInput : NSObject, NSCoding{
     
-    var amount : Int?
+    var amount : Double?
     var coinId : Int?
     var notes : String?
-    var priceUsd : Int?
+    var priceUsd : Double?
     var tradedAt : String?
     
     override init(){
@@ -29,10 +29,10 @@ class PostTradeInput : NSObject, NSCoding{
      * Instantiate the instance using the passed dictionary values to set the properties values
      */
     init(fromDictionary dictionary: [String:Any]){
-        amount = dictionary["amount"] as? Int
+        amount = dictionary["amount"] as? Double
         coinId = dictionary["coin_id"] as? Int
         notes = dictionary["notes"] as? String
-        priceUsd = dictionary["price_usd"] as? Int
+        priceUsd = dictionary["price_usd"] as? Double
         tradedAt = dictionary["traded_at"] as? String
     }
     
@@ -66,16 +66,16 @@ class PostTradeInput : NSObject, NSCoding{
      */
     @objc required init(coder aDecoder: NSCoder)
     {
-        amount = aDecoder.decodeObject(forKey: "amount") as? Int
+        amount = aDecoder.decodeObject(forKey: "amount") as? Double
         coinId = aDecoder.decodeObject(forKey: "coin_id") as? Int
         notes = aDecoder.decodeObject(forKey: "notes") as? String
-        priceUsd = aDecoder.decodeObject(forKey: "price_usd") as? Int
+        priceUsd = aDecoder.decodeObject(forKey: "price_usd") as? Double
         tradedAt = aDecoder.decodeObject(forKey: "traded_at") as? String
     }
     
     /**
      * NSCoding required method.
-     * Encodes mode properties into the decoder
+     * Encodes mode properties Doubleo the decoder
      */
     @objc func encode(with aCoder: NSCoder)
     {
