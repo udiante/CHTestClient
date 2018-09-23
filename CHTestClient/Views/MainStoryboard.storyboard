@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6y7-a8-NU3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uks-xI-cMO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0lG-Uf-2ap">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -38,7 +38,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PUh-m1-SuL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="125.4872563718141"/>
+            <point key="canvasLocation" x="2015.2" y="125.4872563718141"/>
+        </scene>
+        <!--Portfolio-->
+        <scene sceneID="8ly-px-IUb">
+            <objects>
+                <navigationController id="R5y-VQ-yHL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Portfolio" image="portfolio_icon" id="bza-Un-P9x"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="qq9-vc-STN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Veb-ZL-Jth" kind="relationship" relationship="rootViewController" id="aOi-G3-JYm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H3I-aA-Fw9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953" y="813"/>
         </scene>
         <!--Coin Detail View Controller-->
         <scene sceneID="LOV-jC-U1b">
@@ -151,12 +169,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rHi-0r-u0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2036" y="124.58770614692655"/>
+            <point key="canvasLocation" x="2926" y="125"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="ddV-M6-Lg0">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6y7-a8-NU3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="chart_icon" id="lP1-WL-Y5M"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="LKu-8S-UTD">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -171,7 +190,62 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ysX-xt-Kfc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15" y="125"/>
+            <point key="canvasLocation" x="952.79999999999995" y="124.58770614692655"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="51z-bI-Z0Z">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uks-xI-cMO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fRU-ZN-hvB">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="6y7-a8-NU3" kind="relationship" relationship="viewControllers" id="gm7-t3-AeL"/>
+                        <segue destination="R5y-VQ-yHL" kind="relationship" relationship="viewControllers" id="uxs-Zm-nk3"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l5j-Jk-ggE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10" y="518"/>
+        </scene>
+        <!--Portfolio View Controller-->
+        <scene sceneID="nNO-rE-nmI">
+            <objects>
+                <viewController storyboardIdentifier="PortfolioViewController" id="Veb-ZL-Jth" customClass="PortfolioViewController" customModule="CHTestClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tHx-IV-nEy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4G3-pU-LiJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4G3-pU-LiJ" firstAttribute="leading" secondItem="8wz-Ow-Rhp" secondAttribute="leading" id="btw-J3-GVD"/>
+                            <constraint firstItem="8wz-Ow-Rhp" firstAttribute="trailing" secondItem="4G3-pU-LiJ" secondAttribute="trailing" id="cg6-th-MIu"/>
+                            <constraint firstItem="4G3-pU-LiJ" firstAttribute="top" secondItem="8wz-Ow-Rhp" secondAttribute="top" id="fK8-AT-1Kn"/>
+                            <constraint firstItem="8wz-Ow-Rhp" firstAttribute="bottom" secondItem="4G3-pU-LiJ" secondAttribute="bottom" id="zGr-0v-miM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8wz-Ow-Rhp"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Kon-c3-ZZp"/>
+                    <connections>
+                        <outlet property="portfolioTableView" destination="4G3-pU-LiJ" id="oxR-wp-ogy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGW-1j-44C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2015" y="813"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chart_icon" width="36" height="36"/>
+        <image name="portfolio_icon" width="24" height="24"/>
+    </resources>
 </document>

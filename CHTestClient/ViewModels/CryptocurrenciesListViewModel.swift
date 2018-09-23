@@ -64,17 +64,7 @@ class CryptocurrenciesCoinCellViewModel : CryptocurrenciesListCellViewModel {
     }
     
     func getPercentatgeColor()->UIColor {
-        Utils.colorForValue(self.percentatgeChange24Hours)
-        guard let value = Double(self.percentatgeChange24Hours ?? "") else {
-            return Constants.colors.defaultColor
-        }
-        if value > 0 {
-            return Constants.colors.positiveColor
-        }
-        else if value < 0 {
-            return Constants.colors.negativeColor
-        }
-        return Constants.colors.defaultColor
+        return Utils.colorForValue(self.percentatgeChange24Hours)
     }
 }
 
