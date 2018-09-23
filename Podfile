@@ -10,5 +10,6 @@ target 'CHTestClient' do
   pod 'Charts', '~> 3.2.0'
   pod 'Alamofire', '~> 4.7'
   pod 'CDAlertView', '~> 0.9.1'
+  pod 'RealmSwift', '~> 3.10.0'
 
 end

@@ -36,7 +36,12 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
     //MARK: - UI Methods
 
     func showHud(){
-        JustHUD.shared.showInView(view: self.view)
+        if let window = self.view.window ?? UIApplication.shared.windows.first {
+            JustHUD.shared.showInWindow(window: window)
+        }
+        else {
+            JustHUD.shared.showInView(view: self.view)
+        }
     }
     
     func hideHud(){

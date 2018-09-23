@@ -10,6 +10,7 @@ import UIKit
 
 class PortfolioViewController: BaseViewController {
 
+    fileprivate let viewModel = PortfolioViewModel()
     @IBOutlet weak var portfolioTableView: UITableView!
     
     override func viewDidLoad() {
@@ -20,6 +21,7 @@ class PortfolioViewController: BaseViewController {
         portfolioTableView.tableFooterView = UIView()
         portfolioTableView.delegate = self
         portfolioTableView.dataSource = self
+        viewModel.loadPortfolio(delegate: self)
     }
 
 }

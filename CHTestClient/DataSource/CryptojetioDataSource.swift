@@ -10,6 +10,8 @@ import Foundation
 
 class CryptojetioDataSource : NSObject {
     
+    fileprivate static let realmDataSource = RealmDataSource()
+    
     fileprivate enum Endpoints : String  {
         case coins = "coins"
         case coinDetail = "coins/:id"
@@ -27,8 +29,8 @@ class CryptojetioDataSource : NSObject {
     
     fileprivate static let networkDataSource = NetworkDataSource.init(withHTTPheaders: ["Accept":"application/json"])
     
-    fileprivate static let baseURL = "http://localhost:8080/" //Fast Mocked enviorement
-//    fileprivate static let baseURL = "https://test.cryptojet.io/" //Test project with only one enviorement
+//    fileprivate static let baseURL = "http://localhost:8080/" //Fast Mocked enviorement
+    fileprivate static let baseURL = "https://test.cryptojet.io/" //Test project with only one enviorement
 
     fileprivate static let basicAuthHeader = ["Authorization":"Basic cmljaGFyZEByaWNoLmNvbTpzZWNyZXQ="] //Test project without users/session logic
     
@@ -37,22 +39,28 @@ class CryptojetioDataSource : NSObject {
     static func getCoins(completionHandler: (@escaping (NetworkDataSourceError?, CoinResponse?) -> Void)){
         let requestUrl = Endpoints.coins.getFullPath(baseURL: baseURL)
         self.networkDataSource.getRequest(urlRequest: requestUrl, parameters: nil, responseObject: CoinResponse.self) { (error, response) in
-            guard error == nil, let responseObject = response as? CoinResponse else {
-                completionHandler(error ?? NetworkDataSourceError.RequestError,nil)
-                return
-            }
-            completionHandler(nil,responseObject)
+            self.processCoinsResponse(error: error, response: response, completionHandler: completionHandler)
         }
+    }
+    
+    static private func processCoinsResponse(error:NetworkDataSourceError?, response:Codable?, completionHandler: (@escaping (NetworkDataSourceError?, CoinResponse?) -> Void)){
+        guard error == nil, let responseObject = response as? CoinResponse else {
+            completionHandler(error ?? NetworkDataSourceError.RequestError,nil)
+            return
+        }
+        DispatchQueue.global(qos: .background).async {
+            // Cathing the coin data for future usage at the portfolio.
+            for coinData in responseObject.coins?.data ?? [] {
+                saveCoinDataInRealm(coinData: coinData)
+            }
+        }
+        completionHandler(nil,responseObject)
     }
     
     //The API service returns the pagination of the pages with an absolute URL
     static func getCoins(atPage requestUrl:String, completionHandler: (@escaping (NetworkDataSourceError?, CoinResponse?) -> Void)){
         self.networkDataSource.getRequest(urlRequest: requestUrl, parameters: nil, responseObject: CoinResponse.self) { (error, response) in
-            guard error == nil, let responseObject = response as? CoinResponse else {
-                completionHandler(error ?? NetworkDataSourceError.RequestError,nil)
-                return
-            }
-            completionHandler(nil,responseObject)
+            self.processCoinsResponse(error: error, response: response, completionHandler: completionHandler)
         }
     }
     
@@ -63,7 +71,15 @@ class CryptojetioDataSource : NSObject {
                 completionHandler(error ?? NetworkDataSourceError.RequestError,nil)
                 return
             }
+            saveCoinDataInRealm(coinData: responseObject.coin)
             completionHandler(nil,responseObject)
+        }
+    }
+    
+    static private func saveCoinDataInRealm(coinData:CoinData?){
+        if let coinData = coinData {
+            // Updating/Saving the coin for faster portfolio usage
+            CryptojetioDataSource.realmDataSource.newCoinModel(withCoinServiceModel: coinData)
         }
     }
     
