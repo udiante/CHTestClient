@@ -61,10 +61,10 @@ class ExchangeViewController: BaseViewController {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dissmiss))
         }
 
-        txtFieldAmountCryptoCurrency.placeholder = "Amount to purchase".localized()
+        txtFieldAmountCryptoCurrency.placeholder = String(format: "Amount to purchase".localized(), self.viewModel.getCoinSymbol())
         txtFieldUSDValue.placeholder = "Amount of dollars to sell".localized()
         
-        lblLeftCryptoAmount.text = "\(self.viewModel.getCoinSymbol()) Amount:".localized()
+        lblLeftCryptoAmount.text = String(format: "%@ Amount:".localized(), self.viewModel.getCoinSymbol())
         lblLeftUSDValue.text = "USD Amount:".localized()
 
     }
@@ -100,6 +100,7 @@ class ExchangeViewController: BaseViewController {
     }
     
     @IBAction func exchangePressed(_ sender: Any) {
+        self.view.endEditing(true)
         guard let alertText = self.viewModel.getAlertMessage() else {
             return
         }

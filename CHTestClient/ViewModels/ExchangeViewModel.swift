@@ -92,14 +92,14 @@ class ExchangeViewModel: NSObject {
         let baseString : String!
         if amount >= 0 {
             // The user want to buy cryptocurrency //ie: You're going to buy 1 BTC paying $90000
-            baseString = "You're going to buy %@ %@ paying %@.\nAre you sure?".localized()
+            baseString = "You're going to buy %@ %@ paying %@.\n\nAre you sure?".localized()
         }
         else {
             // The user want to sell cryptocurrency //ie: You're going to sell 1 BTC getting $90000
             amount = amount * -1
-            baseString = "You're going to sell %@ %@ getting %@\nAre you sure?".localized()
+            baseString = "You're going to sell %@ %@ obtaining %@\n\nAre you sure?".localized()
         }
-        return String(format: baseString, Utils.formatAmount(amount, decimalPlaces: kDefaultDecimalPlaces, currencySymbol: ""), self.coinModel.symbol ?? "" ,Utils.formatAmount(self.getUSDCost(), decimalPlaces: Constants.decimalPlaces.USD_DOLLAR, currencySymbol: "$"))
+        return String(format: baseString, Utils.formatAmount(amount, decimalPlaces: kDefaultDecimalPlaces, currencySymbol: ""), self.coinModel.symbol ?? "" ,Utils.formatAmount(abs(self.getUSDCost()), decimalPlaces: Constants.decimalPlaces.USD_DOLLAR, currencySymbol: "$"))
     }
     
     func performExchange(delegate:NetworkingViewProtocol) {

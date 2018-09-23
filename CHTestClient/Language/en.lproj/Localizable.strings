@@ -1,0 +1,36 @@
+ /*
+  Localizable.strings
+  CHTestClient
+
+  Created by Alejandro Quibus on 23/9/18.
+  Copyright © 2018 Alejandro Quibus. All rights reserved.
+*/
+"Cryptocurrencies" = "Cryptocurrencies";
+"No internet connection, try again later" = "No Internet connetion. Make sure that you have connection, then try again.";
+"Error, try again later" = "There's a problem with your request.\n\nTry again later.";
+"(USD Value)" = "(USD Value)";
+"Downloading chart data..." = "Downloading chart data";
+"Last Hour" = "Last Hour";
+"Last 24 Hours" = "Last 24 Hours";
+"Last 7 days" = "Last 7 days";
+"Try Again" = "Try Again";
+"Cancel" = "Cancel";
+"No data available" = "No data available";
+"Portfolio" =  "Portfolio";
+"New Exchange" = "New Exchange";
+"Exchange" = "Exchange";
+"Amount to purchase" = "%@ to purchase";
+"Amount of dollars to sell" = "Amount of dollars to sell";
+"%@ Amount:" = "%@ Amount:";
+"USD Amount:" = "USD Amount:";
+"Confirmation required" = "Confirmation required";
+"Confirm" = "Confirm";
+"Success" = "Success";
+"Exchange completed" = "Exchange completed";
+"Press download to retrieve all Cryptocurrencies" = "Press download to retrieve all Cryptocurrencies";
+"Download" = "Download";
+"(Total Value)" = "(Total Value)";
+"1 %@ is %@" = "1 %@ is %@";
+"(%@ units availble)" = "(%@ units availble)";
+"You're going to buy %@ %@ paying %@.\n\nAre you sure?" = "You're going to buy %@ %@ paying %@.\n\nAre you sure?";
+"You're going to sell %@ %@ obtaining %@\n\nAre you sure?" = "You're going to sell %@ %@ obtaining %@\n\nAre you sure?";

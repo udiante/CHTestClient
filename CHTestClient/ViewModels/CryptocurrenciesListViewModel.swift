@@ -60,7 +60,7 @@ class CryptocurrenciesCoinCellViewModel : CryptocurrenciesListCellViewModel {
     }
     
     func getPercentatgeDescription()->String {
-        return "Last 24 hours".localized()
+        return "Last 24 Hours".localized()
     }
     
     func getPercentatgeColor()->UIColor {

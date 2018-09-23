@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  CHTestClient
+
+  Created by Alejandro Quibus on 23/9/18.
+  Copyright © 2018 Alejandro Quibus. All rights reserved.
+*/
+"Cryptocurrencies" = "Criptomonedas";
+"No internet connection, try again later" = "No hay conexión a internet. Prueba más tarde.";
+"Error, try again later" = "Se ha producido un error al realizar tu solicitud.\n\nPrueba más tarde.";
+"(USD Value)" = "(Importe USD)";
+"Downloading chart data..." = "Descargando datos de la gráfica";
+"Last Hour" = "Última Hora";
+"Last 24 Hours" = "Últimas 24 Horas";
+"Last 7 days" = "Última Semana";
+"Try Again" = "Prueba más tarde";
+"Cancel" = "Cancelar";
+"No data available" = "No hay datos disponibles";
+"Portfolio" =  "Portfolio";
+"New Exchange" = "Nuevo Intercambio";
+"Exchange" = "Intercambio";
+"Amount to purchase" = "%@ a comprar";
+"Amount of dollars to sell" = "Dólares a recuperar";
+"%@ Amount:" = "%@ cantidad:";
+"USD Amount:" = "USD valor:";
+"Confirmation required" = "Se requiere confirmación";
+"Confirm" = "Confirmar";
+"Success" = "¡Confirmado!";
+"Exchange completed" = "Intercambio realizado";
+"Press download to retrieve all Cryptocurrencies" = "Pulsa descargar para obtener todas las Criptomonedas";
+"Download" = "Descargar";
+"(Total Value)" = "(Valor total de la cartera)";
+"1 %@ is %@" = "1 %@ equivale a %@";
+"(%@ units availble)" = "(%@ unidades disponibles)";
+"You're going to buy %@ %@ paying %@.\n\nAre you sure?" = "Vas a comprar %@ %@ pagando %@.\n\n¿Estás seguro?";
+"You're going to sell %@ %@ obtaining %@\n\nAre you sure?" = "Vas a vender %@ %@ obteniendo %@\n\n¿Estás seguro?";
