@@ -44,6 +44,10 @@ class CoinDetailViewController: BaseViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPressed))
     }
     
+    override func showHud() {
+        JustHUD.shared.showInView(view: self.view)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
