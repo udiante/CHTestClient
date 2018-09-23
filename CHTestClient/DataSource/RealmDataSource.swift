@@ -43,13 +43,14 @@ class RealmDataSource: NSObject {
         self.saveObjectModel(coin, shouldUpdate: true)
     }
     
-    func newPortfolioModel(withPortfolioServiceModel serviceModel: PortfolioCoins){
+    func newPortfolioModel(withPortfolioServiceModel serviceModel: PortfolioCoins)->PortfolioModel{
         let portfolio = PortfolioModel()
         portfolio.set(withPortfolioServiceModel: serviceModel)
         if let coinId = serviceModel.coin_id, let coinModel = self.getCoinModel(withIdentifier: coinId){
             portfolio.coin = coinModel
         }
         self.saveObjectModel(portfolio, shouldUpdate: true)
+        return portfolio
     }
     
     func getCoinModel(withIdentifier identifier:Int)->CoinModel?{

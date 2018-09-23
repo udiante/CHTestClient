@@ -24,16 +24,10 @@ class PortfolioViewModel: NSObject {
             var coinsIdsToDownload = [Int]()
             for coin in coins where coin.coin_id != nil {
                 // Check if exists in the database
-                let portfolio = PortfolioModel()
-                portfolio.set(withPortfolioServiceModel: coin)
-                if let coinModel = self.realmDataSource.getCoinModel(withIdentifier: coin.coin_id!) {
-                    // Found the coin details
-                    portfolio.coin = coinModel
-                }
-                else {
+                let portfolio = self.realmDataSource.newPortfolioModel(withPortfolioServiceModel: coin)
+                if portfolio.coin == nil {
                     coinsIdsToDownload.append(coin.coin_id!)
                 }
-                self.realmDataSource.saveObjectModel(portfolio, shouldUpdate: true)
             }
             // Download the missing coin data
             self.downloadCoinsById(ids: coinsIdsToDownload, completionHandler: {
