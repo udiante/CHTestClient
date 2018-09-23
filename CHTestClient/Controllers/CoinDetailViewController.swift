@@ -38,6 +38,7 @@ class CoinDetailViewController: BaseViewController {
         updateLegendValues(nil)
         self.title = viewModel.getTitle()
         self.downloadChartData()
+        self.chartView.noDataText = "Downloading chart data...".localized()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,13 +57,18 @@ class CoinDetailViewController: BaseViewController {
         self.rightPercentatgeView.configureCenter(title: self.viewModel.getSevenDaysChangeValue(), subtitle: "Last 7 days".localized())
     }
     
+    override func getLeftButtonDownloadErrorText() -> String? {
+        return "Try Again".localized()
+    }
+    
+    override func getRightButtonDownloadErrorText() -> String? {
+        return "Cancel".localized()
+    }
 
     override func stopDownload(withError error: NetworkDataSourceError?) {
-        if let error = error, error != .NetworkError {
-            // Show custom message
-            self.showAlert(title: "Error".localized(), message: "Error fetching the chart data".localized(), leftTextButton: "Try Again".localized(), rightTextButton: "Cancel".localized(), alertType: .error)
-            super.stopDownload(withError: nil)
-            return
+        if error != nil {
+            chartView.noDataText = "No data available".localized()
+            chartView.notifyDataSetChanged()
         }
         else {
             prepareChartData()
@@ -105,7 +111,6 @@ class CoinDetailViewController: BaseViewController {
         chartView.legend.form = .none
         chartView.legend.enabled = false
         
-        chartView.noDataText = "No data available".localized()
         chartView.noDataTextColor = Constants.colors.defaultColor
         
         chartView.delegate = self

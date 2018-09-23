@@ -89,7 +89,6 @@ class CryptocurrenciesListViewModel: NSObject {
     enum Request : String {
         case currencyList
         case currencyListPage
-        case currencyDetail
     }
     
     func resetCoins(){

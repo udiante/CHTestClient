@@ -44,6 +44,9 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
     }
     
     func showAlert(title:String?, message:String?, leftTextButton:String?, rightTextButton:String?, alertType:CDAlertViewType){
+        guard view.window != nil else {
+            return
+        }
         let alert = CDAlertView(title: title, message: message, type: alertType)
         if let leftActionText = leftTextButton {
             let actionLeft = CDAlertViewAction(title: leftActionText, font: nil, textColor: nil, backgroundColor: nil) { (action) -> Bool in
@@ -62,12 +65,22 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
         alert.show()
     }
     
-    func alertLeftActionPressed(){
+    open func alertLeftActionPressed(){
         // Override for custom action
     }
     
-    func alertRightActionPressed(){
+    open func alertRightActionPressed(){
         // Override for custom action
+    }
+    
+    ///Override for custom right alert text button
+    open func getLeftButtonDownloadErrorText()->String?{
+        return "OK".localized()
+    }
+    
+    ///Override for custom right alert text button
+    open func getRightButtonDownloadErrorText()->String?{
+        return nil
     }
     
     
@@ -82,9 +95,13 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
             if (error == .NetworkError) {
                 alertType = .warning
             }
-            self.showAlert(title: "Error".localized(), message: error.getLocalizedErrorDescription(), leftTextButton: "OK".localized(), rightTextButton: nil, alertType: alertType)
+            self.showAlert(title: "Error".localized(), message: error.getLocalizedErrorDescription(), leftTextButton: self.getLeftButtonDownloadErrorText(), rightTextButton: self.getRightButtonDownloadErrorText(), alertType: alertType)
         }
         hideHud()
+    }
+    
+    func isForceTouchAvailable()->Bool{
+        return self.traitCollection.forceTouchCapability == .available
     }
 
 }

@@ -42,6 +42,10 @@ class CryptocurrenciesListViewController: BaseViewController {
         coinsTableView.refreshControl = refreshControl
         
         self.refreshData()
+        
+        if self.isForceTouchAvailable() {
+            self.registerForPreviewing(with: self, sourceView: self.view)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,4 +144,22 @@ extension CryptocurrenciesListViewController : StartListTableViewCellProtocol {
     func btnPressed() {
         self.refreshData()
     }
+}
+
+//MARK: - 3D Touch
+extension CryptocurrenciesListViewController : UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        let cellPosition = self.coinsTableView.convert(location, from: self.view)
+        if let indexPath = self.coinsTableView.indexPathForRow(at: cellPosition), let coin = (self.viewModel.getCellVM(atIndex: indexPath.row) as? CryptocurrenciesCoinCellViewModel)?.coinModel {
+            let vc = CoinDetailViewController.storyBoardInstance(withCoinModel: coin)
+            return vc
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        self.navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+    
+
 }
