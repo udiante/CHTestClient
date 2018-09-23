@@ -104,7 +104,7 @@ class ExchangeViewController: BaseViewController {
         guard let alertText = self.viewModel.getAlertMessage() else {
             return
         }
-        self.currentAlert = self.showAlert(title: "Confirmation required".localized(), message: alertText, leftTextButton: "Confirm".localized(), rightTextButton: "Cancel".localized(), alertType: .notification)
+        self.currentAlert = self.showAlert(title: "Confirmation required".localized(), message: alertText, leftTextButton: "Confirm".localized(), rightTextButton: "Cancel".localized(), alertType: .warning)
     }
     
     override func alertLeftActionPressed() {

@@ -51,7 +51,7 @@ class ExchangeViewModel: NSObject {
     
     /// Sets the current amount of the cryptocurrency that the users want to exchange and returns their equivalent in USD. If the value returned is null the amount is invalid
     func setAmountToExchange(rawValue:String?)->String?{
-        guard let string = rawValue, let doubleValue = Double(string), doubleValue >= kMinAmountToExchange else {
+        guard let string = rawValue?.replacingOccurrences(of: ",", with: "."), let doubleValue = Double(string), doubleValue >= kMinAmountToExchange else {
             self.amountToExchange = nil
             return nil
         }
@@ -63,7 +63,7 @@ class ExchangeViewModel: NSObject {
     
     /// Sets the current amount of the USD that the users want to exchange and returns their equivalent in the cryptocurrency value. If the value returned is null the amount is invalid
     func setAmountFromUSD(rawValue:String?)->String?{
-        guard let string = rawValue, let doubleValue = Double(string) else {
+        guard let string = rawValue?.replacingOccurrences(of: ",", with: "."), let doubleValue = Double(string) else {
             self.amountToExchange = nil
             return nil
         }
