@@ -49,7 +49,7 @@ class CoinDetailViewController: BaseViewController {
         
         // One hour
         self.leftPercentatgeView.titleColor = self.viewModel.getOneHourChangeColor()
-        self.leftPercentatgeView.configureCenter(title: self.viewModel.getOneDayChangeValue(), subtitle: "Last Hour".localized())
+        self.leftPercentatgeView.configureCenter(title: self.viewModel.getOneHourChangeValue(), subtitle: "Last Hour".localized())
         
         // 24 hours
         self.midPercentatgeView.titleColor = self.viewModel.get24HoursChangeColor()
