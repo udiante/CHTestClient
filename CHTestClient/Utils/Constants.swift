@@ -15,10 +15,12 @@ struct Constants {
         static let negativeColor = UIColor.red
         static let disabledColor = UIColor.gray.withAlphaComponent(0.6)
         static let enabledWhiteStyleColor = UIColor.black
+        static let highlightColor = UIColor.yellow
     }
     
     struct symbols {
         static let USD_DOLLAR = "$"
+        static let NO_DATA_VALUE = "-"
     }
     
     struct decimalPlaces {

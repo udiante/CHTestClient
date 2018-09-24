@@ -11,20 +11,8 @@ import RealmSwift
 
 class RealmDataSource: NSObject {
     
-    override init() {
-        #if DEBUG
-        print(Realm.Configuration.defaultConfiguration.fileURL ?? "")
-        #endif
-    }
-    
     private func getRealm()->Realm?{
-        var realm : Realm?
-        do {
-            realm = try Realm()
-        } catch (let error) {
-            print(error)
-        }
-        return realm
+        return try? Realm()
     }
     
     func saveObjectModel(_ objectModel:Object, shouldUpdate:Bool?) {
@@ -74,6 +62,7 @@ class RealmDataSource: NSObject {
         return realm.objects(PortfolioModel.self).map({$0})
     }
     
+    ///Matches a PortfolioModel with their related CoinModel given their coin identifier.
     func updatePortFolioModelCoin(_ coinId:Int){
         guard let realm = self.getRealm(), let coinModel = getCoinModel(withIdentifier: coinId), let portfolioModel = getPortfolioModel(withIdentifier: coinId) else {
             return

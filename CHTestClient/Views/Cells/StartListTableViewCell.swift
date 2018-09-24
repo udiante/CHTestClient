@@ -13,9 +13,9 @@ protocol StartListTableViewCellProtocol : class {
 }
 
 class StartListTableViewCell: UITableViewCell {
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var btn: UIButton!
+    @IBOutlet private weak var iconImageView: UIImageView!
+    @IBOutlet private weak var lblTitle: UILabel!
+    @IBOutlet private weak var btn: UIButton!
     
     weak var delegate : StartListTableViewCellProtocol?
     

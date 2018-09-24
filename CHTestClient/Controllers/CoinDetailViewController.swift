@@ -18,7 +18,7 @@ class CoinDetailViewController: BaseViewController {
     @IBOutlet private weak var chartView: LineChartView!
     
     @IBOutlet private weak var lblValue: UILabel!
-    @IBOutlet weak var lblInfo: UILabel!
+    @IBOutlet private weak var lblInfo: UILabel!
     
     
     fileprivate (set) var viewModel : CoinDetailViewModel!
@@ -40,7 +40,7 @@ class CoinDetailViewController: BaseViewController {
         self.downloadChartData()
         self.chartView.noDataText = "Downloading chart data...".localized()
         
-        //Exchange cryptocurrency
+        //Option to Exchange the cryptocurrency
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPressed))
     }
     
@@ -93,35 +93,25 @@ class CoinDetailViewController: BaseViewController {
     }
     
     func configureChart(){
+        chartView.noDataTextColor = Constants.colors.defaultColor
+        chartView.delegate = self
+        
         chartView.chartDescription?.enabled = false
         chartView.drawGridBackgroundEnabled = false
         chartView.drawBordersEnabled = false
-        
         chartView.dragEnabled = true
         chartView.setScaleEnabled(false)
         chartView.pinchZoomEnabled = true
         
         chartView.xAxis.labelPosition = .bottom
-        chartView.xAxis.labelTextColor = Constants.colors.defaultColor
         chartView.xAxis.drawAxisLineEnabled = true
         chartView.xAxis.drawGridLinesEnabled = false
         chartView.xAxis.drawLabelsEnabled = false
+        chartView.xAxis.labelTextColor = Constants.colors.defaultColor
 
         chartView.rightAxis.enabled = false
-        chartView.rightAxis.drawAxisLineEnabled = false
-        chartView.rightAxis.drawGridLinesEnabled = false
-        chartView.rightAxis.drawLabelsEnabled = false
-        
         chartView.leftAxis.enabled = false
-        
-        //Legend
-        chartView.legend.form = .none
         chartView.legend.enabled = false
-        
-        chartView.noDataTextColor = Constants.colors.defaultColor
-        
-        chartView.delegate = self
-    
     }
     
     func prepareChartData(){
@@ -140,18 +130,18 @@ class CoinDetailViewController: BaseViewController {
         set.drawIconsEnabled = true
         
         set.highlightLineDashLengths = [5, 0]
-        set.setColor(.white)
-        set.setCircleColor(.white)
+        set.setColor(Constants.colors.defaultColor)
+        set.setCircleColor(Constants.colors.defaultColor)
         set.lineWidth = 2
         set.circleRadius = 0
         set.drawCircleHoleEnabled = false
         set.valueFont = .systemFont(ofSize: 9)
         set.drawValuesEnabled = false
         set.drawHorizontalHighlightIndicatorEnabled = false
-        set.highlightColor = UIColor.yellow
+        set.highlightColor = Constants.colors.highlightColor
         set.highlightLineWidth = 2
         set.formLineDashLengths = [5, 2.5]
-        set.formLineWidth = 10
+        set.formLineWidth = 8
         set.formSize = 15
         
         set.drawFilledEnabled = false

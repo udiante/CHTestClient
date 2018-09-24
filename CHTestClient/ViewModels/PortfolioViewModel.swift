@@ -9,8 +9,6 @@
 import UIKit
 
 class PortfolioCellViewModel : NSObject {
-
-    fileprivate let defaultNoDataValue = "-"
     
     enum CellTypes {
         case TradeCell
@@ -48,7 +46,7 @@ class PortfolioTradeCellViewModel : PortfolioCellViewModel {
     }
     
     func getCellTitle()->String {
-        return "\(self.portfolioModel.coin?.name ?? defaultNoDataValue)"
+        return "\(self.portfolioModel.coin?.name ?? Constants.symbols.NO_DATA_VALUE)"
     }
     
     func getTotalCoinAmount()->String {

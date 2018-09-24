@@ -55,9 +55,7 @@ class CryptocurrenciesListViewController: BaseViewController {
     
     override func stopDownload(withError error: NetworkDataSourceError?) {
         if let currentRequest = self.viewModel.currentRequest {
-            if currentRequest == .currencyList || currentRequest == .currencyListPage {
-                self.reloadData()
-            }
+            self.reloadData()
             if currentRequest == .currencyListPage {
                 // Silent request without warning
                 super.stopDownload(withError: nil)
@@ -70,6 +68,7 @@ class CryptocurrenciesListViewController: BaseViewController {
     
     override func startDownload() {
         if let currentRequest = self.viewModel.currentRequest, currentRequest == .currencyListPage || refreshControl.isRefreshing {
+            // Do not display HUD if a HUD is already present (refreshControl or with the cell LoadingTableViewCell)
             return
         }
         super.startDownload()

@@ -20,7 +20,7 @@
 "New Exchange" = "New Exchange";
 "Exchange" = "Exchange";
 "Amount to purchase" = "%@ to purchase";
-"Amount of dollars to sell" = "Amount of dollars to sell";
+"Amount of dollars to sell" = "Amount of dollars to obtain";
 "%@ Amount:" = "%@ Amount:";
 "USD Amount:" = "USD Amount:";
 "Confirmation required" = "Confirmation required";

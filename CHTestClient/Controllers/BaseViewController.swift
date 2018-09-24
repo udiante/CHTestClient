@@ -103,7 +103,7 @@ class BaseViewController: UIViewController, NetworkingViewProtocol {
     
     // MARK: - Refresh Controll
     
-    ///This functions must be overrided
+    ///This function must be overrided for a custom refreshControll usage
     @objc open func refreshData() {
         
     }

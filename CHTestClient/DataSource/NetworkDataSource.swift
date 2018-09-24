@@ -24,14 +24,20 @@ public enum NetworkDataSourceError : Error {
     }
 }
 
+/// Generic Network data source allowing GET and POST request to external services.
 public class NetworkDataSource: NSObject {
     
     fileprivate let defaultHTTPheaders : HTTPHeaders?
     
-    init(withHTTPheaders httpHeaders:HTTPHeaders){
+    /**
+     Initializes the NetworkDataSource with a default HTTPHeaders that will be sent on each request.
+     - Parameter httpHeaders: HTTP headers that will be send on each request.
+     */
+    init(withHTTPheaders httpHeaders:HTTPHeaders?){
         self.defaultHTTPheaders = httpHeaders;
     }
     
+    /// Securely prints the provided items in the console only if the app is build with the debug enabled.
     private func log(_ items: Any...){
         #if DEBUG
         print(items)

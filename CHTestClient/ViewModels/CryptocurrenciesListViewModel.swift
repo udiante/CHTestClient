@@ -100,7 +100,7 @@ class CryptocurrenciesListViewModel: NSObject {
         let currencyCompletionHandler : (NetworkDataSourceError?, CoinResponse?) -> Void = { (error, coins) -> Void in
             guard error == nil, let coinsArray = coins?.coins?.data else {
                 self.requestEnded(withError: error, delegate: delegate)
-                // If happens an error the pagination ends
+                // If the request has an error the pagination ends
                 self.nextPageUrl = nil
                 return
             }
@@ -131,7 +131,7 @@ class CryptocurrenciesListViewModel: NSObject {
             cellsVM.append(CryptocurrenciesListCellViewModel())
         }
         if self.cellsVM.count == 0 {
-            // Retry download
+            // Retry download info cell
             cellsVM.append(CryptocurrenciesListCellViewModel(infoType: "Press download to retrieve all Cryptocurrencies".localized(), btnText: "Download".localized(), icon: UIImage(named: "chip")?.withRenderingMode(.alwaysTemplate)))
         }
     }

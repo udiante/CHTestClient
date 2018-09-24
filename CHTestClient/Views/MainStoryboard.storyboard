@@ -198,6 +198,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="uks-xI-cMO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fRU-ZN-hvB">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -303,13 +304,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXX Amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4GK-d0-WpA">
-                                                <rect key="frame" x="10" y="5" width="92" height="30"/>
+                                                <rect key="frame" x="10" y="5" width="91.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount to purchase" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="01i-My-uHo">
-                                                <rect key="frame" x="157.5" y="5" width="167.5" height="30"/>
+                                                <rect key="frame" x="124" y="5" width="201" height="30"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="PMV-MH-XjI"/>
@@ -319,7 +320,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5E-2d-Wgs">
-                                                <rect key="frame" x="159.5" y="34" width="167.5" height="1"/>
+                                                <rect key="frame" x="126" y="34" width="201" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="d0K-1c-JmW"/>
@@ -337,7 +338,7 @@
                                             <constraint firstAttribute="trailing" secondItem="01i-My-uHo" secondAttribute="trailing" constant="10" id="ThQ-6d-Vob"/>
                                             <constraint firstItem="01i-My-uHo" firstAttribute="trailing" secondItem="f5E-2d-Wgs" secondAttribute="trailing" constant="-2" id="giT-IE-8Fv"/>
                                             <constraint firstItem="01i-My-uHo" firstAttribute="top" secondItem="IB8-Oa-i3f" secondAttribute="top" constant="5" id="rPW-RK-rej"/>
-                                            <constraint firstItem="01i-My-uHo" firstAttribute="width" secondItem="IB8-Oa-i3f" secondAttribute="width" multiplier="0.5" id="t39-Hm-N60"/>
+                                            <constraint firstItem="01i-My-uHo" firstAttribute="width" secondItem="IB8-Oa-i3f" secondAttribute="width" multiplier="0.6" id="t39-Hm-N60"/>
                                             <constraint firstItem="01i-My-uHo" firstAttribute="bottom" secondItem="f5E-2d-Wgs" secondAttribute="bottom" id="xfY-UZ-smD"/>
                                         </constraints>
                                     </view>
@@ -360,7 +361,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Value in USD" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2bQ-jf-Hif">
-                                        <rect key="frame" x="157.5" y="5" width="167.5" height="30"/>
+                                        <rect key="frame" x="124" y="5" width="201" height="30"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="bDb-gn-uF2"/>
@@ -370,7 +371,7 @@
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9F-JW-9eW">
-                                        <rect key="frame" x="159.5" y="34" width="167.5" height="1"/>
+                                        <rect key="frame" x="126" y="34" width="201" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="NGg-rG-fom"/>

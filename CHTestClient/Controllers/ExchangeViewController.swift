@@ -129,6 +129,7 @@ class ExchangeViewController: BaseViewController {
     override func stopDownload(withError error: NetworkDataSourceError?) {
         super.stopDownload(withError: error)
         if error == nil {
+            // Exchange success
             if let alert = self.showAlert(title: "Success".localized(), message: "Exchange completed".localized(), leftTextButton: nil, rightTextButton: nil, alertType: .success) {
                 _ = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { (timer) in
                     alert.hide(isPopupAnimated: false)
@@ -153,7 +154,7 @@ extension ExchangeViewController : UITextFieldDelegate {
         }
         let newString = NSString(string: text).replacingCharacters(in: range, with: string)
         if (textField == self.txtFieldAmountCryptoCurrency) {
-            // Cryptocurrency textfield
+            // Cryptocurrency textfield, the user wants to buy cryptocurrency.
             if let usdEquivalent = self.viewModel.setAmountToExchange(rawValue: newString) {
                 self.txtFieldUSDValue.text = usdEquivalent
                 self.setButtonEnabled(true)
@@ -164,7 +165,7 @@ extension ExchangeViewController : UITextFieldDelegate {
             }
         }
         else {
-            // USD textfield
+            // USD textfield, the user wants to obtain USD selling cryptocurrency.
             if let cryptoAmount = self.viewModel.setAmountFromUSD(rawValue: newString) {
                 self.txtFieldAmountCryptoCurrency.text = cryptoAmount
                 self.setButtonEnabled(true)

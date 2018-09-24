@@ -49,7 +49,11 @@ class ExchangeViewModel: NSObject {
         return self.coinModel.symbol ?? ""
     }
     
-    /// Sets the current amount of the cryptocurrency that the users want to exchange and returns their equivalent in USD. If the value returned is null the amount is invalid
+    /**
+        Sets the current amount of the currency that the user wants to buy and returns their cost in USD if valid.
+     - Parameter rawValue: String with the amount to buy.
+     - Returns: The cost in USD of the currency purchase. **If nil the amount is invalid.**
+    */
     func setAmountToExchange(rawValue:String?)->String?{
         guard let string = rawValue?.replacingOccurrences(of: ",", with: "."), let doubleValue = Double(string), doubleValue >= kMinAmountToExchange else {
             self.amountToExchange = nil
@@ -61,20 +65,25 @@ class ExchangeViewModel: NSObject {
         return Utils.formatAmount(usdValue * -1, decimalPlaces: kDefaultDecimalPlaces, currencySymbol: Constants.symbols.USD_DOLLAR)
     }
     
-    /// Sets the current amount of the USD that the users want to exchange and returns their equivalent in the cryptocurrency value. If the value returned is null the amount is invalid
+    /**
+     Sets the current amount of the USD that the user wants to rebuy and returns their cost in Cryptocurrency if valid.
+     - Parameter rawValue: String with the amount to retrieve.
+     - Returns: The cost in Cryptocurrecy of the USD to repurchase. **If nil the amount is invalid.**
+     */
     func setAmountFromUSD(rawValue:String?)->String?{
         guard let string = rawValue?.replacingOccurrences(of: ",", with: "."), let doubleValue = Double(string) else {
             self.amountToExchange = nil
             return nil
         }
-        let amount = doubleValue / getPriceUSD()
+        var amount = doubleValue / getPriceUSD()
         guard amount >= kMinAmountToExchange else {
             self.amountToExchange = nil
             return nil
         }
         // Case: the users wants USD and is selling cryptocurrency (the amount is negative)
-        self.amountToExchange = amount * -1
-        return Utils.formatAmount(amount * -1, decimalPlaces: kDefaultDecimalPlaces, currencySymbol: "")
+        amount = amount * -1
+        self.amountToExchange = amount
+        return Utils.formatAmount(amount, decimalPlaces: kDefaultDecimalPlaces, currencySymbol: "")
     }
     
     func getUSDCost()->Double{
@@ -85,6 +94,7 @@ class ExchangeViewModel: NSObject {
         return 0.0
     }
     
+    ///Returns the string to display as a confirmation Alert to the user before confirm the exchange.
     func getAlertMessage()->String? {
         guard var amount = self.amountToExchange else {
             return nil

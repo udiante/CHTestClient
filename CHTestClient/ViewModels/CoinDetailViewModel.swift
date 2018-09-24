@@ -8,6 +8,7 @@
 
 import UIKit
 
+// ViewModel for the each dot of the historical chart.
 class CoinHistoricalChartModel {
     let usdValue : Double
     let dateValue : Date
@@ -35,7 +36,6 @@ class CoinHistoricalChartModel {
 
 class CoinDetailViewModel: NSObject {
     
-    fileprivate let kDefaultDecimalPlaces = 2
     fileprivate var historicalData = [Historical]()
 
     fileprivate (set) var coinModel : CoinData
@@ -57,15 +57,15 @@ class CoinDetailViewModel: NSObject {
     }
     
     func getOneHourChangeValue()->String{
-        return Utils.formattPercent(self.coinModel.percent_change_1h ?? "-", decimalPlaces: kDefaultDecimalPlaces)
+        return Utils.formattPercent(self.coinModel.percent_change_1h ?? "-", decimalPlaces: Constants.decimalPlaces.PERCENT)
     }
     
     func getOneDayChangeValue()->String{
-        return Utils.formattPercent(self.coinModel.percent_change_24h ?? "-", decimalPlaces: kDefaultDecimalPlaces)
+        return Utils.formattPercent(self.coinModel.percent_change_24h ?? "-", decimalPlaces: Constants.decimalPlaces.PERCENT)
     }
     
     func getSevenDaysChangeValue()->String{
-        return Utils.formattPercent(self.coinModel.percent_change_7d ?? "-", decimalPlaces: kDefaultDecimalPlaces)
+        return Utils.formattPercent(self.coinModel.percent_change_7d ?? "-", decimalPlaces: Constants.decimalPlaces.PERCENT)
     }
     
     func getOneHourChangeColor()->UIColor{

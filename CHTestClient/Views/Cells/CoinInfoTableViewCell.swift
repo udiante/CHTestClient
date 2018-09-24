@@ -44,4 +44,8 @@ class CoinInfoTableViewCell: UITableViewCell {
         self.lblPercentatgeDesc.text = "(USD Value)".localized()
     }
     
+    func applyAccessibility(){
+        self.isAccessibilityElement = true
+    }
+    
 }

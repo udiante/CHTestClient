@@ -37,7 +37,7 @@ class PortfolioViewController: BaseViewController {
     
     override func stopDownload(withError error: NetworkDataSourceError?) {
         super.stopDownload(withError: error)
-        reloadData()
+        self.reloadData()
     }
 
     func downloadData(){
@@ -70,7 +70,6 @@ extension PortfolioViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.configure(withViewModel: cellVM)
                 return cell
             }
-            return UITableViewCell()
         case .InfoCell:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "StartListTableViewCell", for: indexPath) as? StartListTableViewCell {
                 cell.configure(withViewModel: cellVM)
