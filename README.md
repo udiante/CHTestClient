@@ -6,6 +6,7 @@
 - Displays all the Cryptocurrency historical data and shows it in a Chart.
 - Allows simple buy and sell Cryptocurrencies getting directly their cost in USD that the user will get in the exchange.
 - Easy offline access to the user Portfolio. (This feature is possible downloading and storing all the coin detail missing from the Portfolio request like the cryptocurrency name).
+- Localized in Spanish and English.
 
 # PROJECT COMPATIBILITY #
 
