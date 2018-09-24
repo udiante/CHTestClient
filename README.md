@@ -2,11 +2,11 @@
 # KEY FEATURES #
 - Developed using MVVM.
 - A black theme that looks amazing with the iPhones with OLED display and the old ones to.
-- Displays all the currencies available at the API using a scrolled pagination.
+- Displays all the Cryptocurrencies available at the API using a scrolled pagination.
 - Displays all the Cryptocurrency historical data and shows it in a Chart.
-- Allows simple buy and sell Cryptocurrencies getting directly their cost in USD that the user will get in the exchange.
-- Easy offline access to the user Portfolio. (This feature is possible downloading and storing all the coin detail missing from the Portfolio request like the cryptocurrency name).
-- Localized in Spanish and English.
+- Allows simple buy and sell of Cryptocurrencies getting directly their cost in USD that the user will get in the exchange.
+- Offline access to the user Portfolio. (This feature is possible downloading and storing all the coin detail missing from the Portfolio request like the cryptocurrency name).
+- Fully localized in Spanish and English using the device locale for the number formatting.
 
 # PROJECT COMPATIBILITY #
 
