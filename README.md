@@ -1,7 +1,7 @@
 
 # KEY FEATURES #
 - Developed using MVVM.
-- A black theme that looks amazing with the iPhones with OLED display and the old ones to.
+- A black theme that looks amazing with the iPhones with OLED display and the old ones too.
 - Displays all the Cryptocurrencies available at the API using a scrolled pagination.
 - Displays all the Cryptocurrency historical data and shows it in a Chart.
 - Allows simple buy and sell of Cryptocurrencies getting directly their cost in USD that the user will get in the exchange.
